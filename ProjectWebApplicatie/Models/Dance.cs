@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProjectWebApplicatie.Models
 {
-    public class Jazz : Evenement
+    public class Dance : Evenement
     {
         public virtual string Stage { get; set; }
         public virtual Artiest Artiest { get; set; }

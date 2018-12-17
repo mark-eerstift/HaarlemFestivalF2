@@ -188,10 +188,15 @@
     <Compile Include="Migrations\201812131257178_Login.Designer.cs">
       <DependentUpon>201812131257178_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812171548480_JazzDanceApart.cs" />
+    <Compile Include="Migrations\201812171548480_JazzDanceApart.Designer.cs">
+      <DependentUpon>201812171548480_JazzDanceApart.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
     <Compile Include="Models\CMS.cs" />
+    <Compile Include="Models\Dance.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\JazzDance.cs" />
     <Compile Include="Models\DayAllPassTicket.cs" />
@@ -270,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Migrations\201812171548147_Jazz\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -297,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812131257178_Login.resx">
       <DependentUpon>201812131257178_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812171548480_JazzDanceApart.resx">
+      <DependentUpon>201812171548480_JazzDanceApart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

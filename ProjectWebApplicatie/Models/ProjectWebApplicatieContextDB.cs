@@ -21,7 +21,13 @@ namespace ProjectWebApplicatie.Models
     
         public DbSet<ProjectWebApplicatie.Models.Evenement> Evenements { get; set; }
 
-        
+        public DbSet<ProjectWebApplicatie.Models.Food> Foods { get; set; }
+
+        public DbSet<ProjectWebApplicatie.Models.History> Historys { get; set; }
+
+        public DbSet<ProjectWebApplicatie.Models.Jazz> Jazzs { get; set; }
+
+        public DbSet<ProjectWebApplicatie.Models.Dance> Dances { get; set; }
 
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Event> Events { get; set; }
 
