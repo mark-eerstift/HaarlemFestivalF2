@@ -109,9 +109,7 @@ namespace ProjectWebApplicatie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Evenement evenement = db.Evenements.Find(id);
-            db.Evenements.Remove(evenement);
-            db.SaveChanges();
+            repo.DeleteEvenement(id);
             return RedirectToAction("Index");
         }
 

@@ -11,7 +11,7 @@ namespace ProjectWebApplicatie.Repositories
         Evenement GetEvenement(int evenementId);
         void AddEvenement(Evenement evenement);
         void EditEvenement(Evenement evenement);
-        void DeleteEvenement(Evenement evenement);
+        void DeleteEvenement(int id);
 
         IEnumerable<Evenement> GetAllDance();
         IEnumerable<Evenement> GetAllJazz();

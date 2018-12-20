@@ -19,9 +19,11 @@ namespace ProjectWebApplicatie.Repositories
            
         }
 
-        public void DeleteEvenement(Evenement evenement)
+        public void DeleteEvenement(int id)
         {
-            throw new NotImplementedException();
+            Evenement evenement = db.Evenements.Find(id);
+            db.Evenements.Remove(evenement);
+            db.SaveChanges();
         }
 
         public void EditEvenement(Evenement evenement)
