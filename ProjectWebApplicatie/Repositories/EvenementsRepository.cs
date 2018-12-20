@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Data.Entity;
+using ProjectWebApplicatie.Models;
+
+namespace ProjectWebApplicatie.Repositories
+{
+    public class EvenementsRepository : IEvenementsRepository
+
+    {
+        private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+
+        public void AddEvenement(Evenement evenement)
+        {
+            db.Evenements.Add(evenement);
+            db.SaveChanges();
+           
+        }
+
+        public void DeleteEvenement(Evenement evenement)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EditEvenement(Evenement evenement)
+        {
+            db.Entry(evenement).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public IEnumerable<Evenement> GetAllDance()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Evenement> GetAllFood()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Evenement> GetAllHistory()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Evenement> GetAllJazz()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Evenement GetEvenement(int evenementId)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

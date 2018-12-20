@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectWebApplicatie.Models;
+using ProjectWebApplicatie.Repositories;
 
 namespace ProjectWebApplicatie.Controllers
 {
     public class EvenementsController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private IEvenementsRepository repo = new EvenementsRepository();
 
         // GET: Evenements
         public ActionResult Index()
@@ -50,8 +52,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Evenements.Add(evenement);
-                db.SaveChanges();
+                repo.AddEvenement(evenement);
                 return RedirectToAction("Index");
             }
 
@@ -82,8 +83,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evenement).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.EditEvenement(evenement);
                 return RedirectToAction("Index");
             }
             return View(evenement);
