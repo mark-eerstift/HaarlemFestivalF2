@@ -16,6 +16,5 @@ namespace ProjectWebApplicatie.Repositories
 
         IEnumerable<Ticket> GetTicketsListDb();
         Ticket GetTicket(int? id);
-
     }
 }

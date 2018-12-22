@@ -7,17 +7,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectWebApplicatie.Models;
+using ProjectWebApplicatie.Repositories;
 
 namespace ProjectWebApplicatie.Controllers
 {
     public class LoginController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private ILoginRepository repo = new LoginRepository();
 
         // GET: Login
         public ActionResult Index()
         {
-            return View(db.Vrijwilligers.ToList());
+            return View(repo.GetVrijWilligersListDb());
         }
 
         // GET: Login/Details/5
@@ -27,7 +29,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vrijwilliger vrijwilliger = db.Vrijwilligers.Find(id);
+            Vrijwilliger vrijwilliger = repo.GetVrijwilliger(id);
             if (vrijwilliger == null)
             {
                 return HttpNotFound();
@@ -50,8 +52,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Vrijwilligers.Add(vrijwilliger);
-                db.SaveChanges();
+                repo.AddVrijwilliger(vrijwilliger);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +67,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vrijwilliger vrijwilliger = db.Vrijwilligers.Find(id);
+            Vrijwilliger vrijwilliger = repo.GetVrijwilliger(id);
             if (vrijwilliger == null)
             {
                 return HttpNotFound();
@@ -82,8 +84,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vrijwilliger).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Entry(vrijwilliger);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(vrijwilliger);
@@ -96,7 +98,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vrijwilliger vrijwilliger = db.Vrijwilligers.Find(id);
+            Vrijwilliger vrijwilliger = repo.GetVrijwilliger(id);
             if (vrijwilliger == null)
             {
                 return HttpNotFound();
@@ -109,9 +111,9 @@ namespace ProjectWebApplicatie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vrijwilliger vrijwilliger = db.Vrijwilligers.Find(id);
-            db.Vrijwilligers.Remove(vrijwilliger);
-            db.SaveChanges();
+            Vrijwilliger vrijwilliger = repo.GetVrijwilliger(id);
+            repo.RemoveVrijwilliger(vrijwilliger);
+            repo.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +121,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                repo.Dispose();
             }
             base.Dispose(disposing);
         }
