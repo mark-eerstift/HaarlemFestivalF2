@@ -19,7 +19,8 @@ namespace ProjectWebApplicatie.Controllers
         // GET: Evenements
         public ActionResult Index()
         {
-            return View(db.Evenements.ToList());
+            //This has to be moved to repo
+            return View(repo.EvenementListDb());
         }
 
         // GET: Evenements/Details/5
@@ -29,7 +30,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
+            Evenement evenement = repo.GetEvenement(id);
             if (evenement == null)
             {
                 return HttpNotFound();
@@ -66,7 +67,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
+            Evenement evenement = repo.GetEvenement(id);
             if (evenement == null)
             {
                 return HttpNotFound();
@@ -96,7 +97,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
+            Evenement evenement = repo.GetEvenement(id);
             if (evenement == null)
             {
                 return HttpNotFound();
@@ -117,7 +118,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                repo.Dispose();
             }
             base.Dispose(disposing);
         }

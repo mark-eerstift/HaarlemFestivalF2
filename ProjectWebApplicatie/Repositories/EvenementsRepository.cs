@@ -32,6 +32,22 @@ namespace ProjectWebApplicatie.Repositories
             db.SaveChanges();
         }
 
+        // to-do
+        public IEnumerable<Evenement> EvenementListDb()
+        {
+            return db.Evenements.ToList();
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
+        }
+
+        public Evenement GetEvenement(int? id)
+        {
+            return db.Evenements.Find(id);
+        }
+
         public IEnumerable<Evenement> GetAllDance()
         {
             throw new NotImplementedException();
@@ -52,9 +68,5 @@ namespace ProjectWebApplicatie.Repositories
             throw new NotImplementedException();
         }
 
-        public Evenement GetEvenement(int evenementId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
