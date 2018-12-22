@@ -33,7 +33,7 @@ namespace ProjectWebApplicatie.Repositories
         }
 
         // to-do
-        public IEnumerable<Evenement> EvenementListDb()
+        public IEnumerable<Evenement> GetEvenementListDb()
         {
             return db.Evenements.ToList();
         }

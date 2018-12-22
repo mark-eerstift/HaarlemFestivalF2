@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ProjectWebApplicatie.Models;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace ProjectWebApplicatie.Repositories
 {
@@ -41,5 +42,9 @@ namespace ProjectWebApplicatie.Repositories
             return db.Events.ToList();
         }
 
+        public void Entry(Event @event)
+        {
+            db.Entry(@event).State = EntityState.Modified;
+        }
     }
 }

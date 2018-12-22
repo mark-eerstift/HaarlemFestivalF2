@@ -20,7 +20,7 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult Index()
         {
             //This has to be moved to repo
-            return View(repo.EvenementListDb());
+            return View(repo.GetEvenementListDb());
         }
 
         // GET: Evenements/Details/5

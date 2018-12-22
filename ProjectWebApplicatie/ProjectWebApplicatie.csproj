@@ -218,6 +218,8 @@
     <Compile Include="Repositories\EventsRepository.cs" />
     <Compile Include="Repositories\IEvenementsRepository.cs" />
     <Compile Include="Repositories\IEventsRepository.cs" />
+    <Compile Include="Repositories\ITicketsRepository.cs" />
+    <Compile Include="Repositories\TicketsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

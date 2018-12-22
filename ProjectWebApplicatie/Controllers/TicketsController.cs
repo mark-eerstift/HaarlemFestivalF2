@@ -7,17 +7,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectWebApplicatie.Models;
+using ProjectWebApplicatie.Repositories;
 
 namespace ProjectWebApplicatie.Controllers
 {
     public class TicketsController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private ITicketsRepository repo = new TicketsRepository();
 
         // GET: Tickets
         public ActionResult Index()
         {
-            return View(db.Tickets.ToList());
+            return View(repo.GetTicketsListDb());
         }
 
         // GET: Tickets/Details/5
@@ -27,7 +29,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ticket ticket = db.Tickets.Find(id);
+            Ticket ticket = repo.GetTicket(id);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -50,8 +52,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tickets.Add(ticket);
-                db.SaveChanges();
+                repo.AddTicket(ticket);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +67,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ticket ticket = db.Tickets.Find(id);
+            Ticket ticket = repo.GetTicket(id);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -82,8 +84,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(ticket).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Entry(ticket);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(ticket);
@@ -96,7 +98,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ticket ticket = db.Tickets.Find(id);
+            Ticket ticket = repo.GetTicket(id);
             if (ticket == null)
             {
                 return HttpNotFound();
@@ -109,9 +111,9 @@ namespace ProjectWebApplicatie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Ticket ticket = db.Tickets.Find(id);
-            db.Tickets.Remove(ticket);
-            db.SaveChanges();
+            Ticket ticket = repo.GetTicket(id);
+            repo.RemoveTicket(ticket);
+            repo.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +121,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                repo.Dispose();
             }
             base.Dispose(disposing);
         }

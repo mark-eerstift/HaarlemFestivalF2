@@ -14,12 +14,10 @@ namespace ProjectWebApplicatie.Repositories
         void DeleteEvenement(int id);
         void Dispose();
 
-        IEnumerable<Evenement> EvenementListDb();
+        IEnumerable<Evenement> GetEvenementListDb();
         IEnumerable<Evenement> GetAllDance();
         IEnumerable<Evenement> GetAllJazz();
         IEnumerable<Evenement> GetAllFood();
         IEnumerable<Evenement> GetAllHistory();
-
-
     }
 }
