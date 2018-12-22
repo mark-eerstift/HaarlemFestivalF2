@@ -7,17 +7,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectWebApplicatie.Models;
+using ProjectWebApplicatie.Repositories;
 
 namespace ProjectWebApplicatie.Controllers
 {
     public class EventsController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private IEventsRepository repo = new EventsRepository();
 
         // GET: Events
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            return View(repo.GetEventListDb());
         }
 
         // GET: Events/Details/5
@@ -27,7 +29,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event = repo.GetEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -50,8 +52,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
+                repo.AddEvent(@event);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +67,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event = repo.GetEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -82,8 +84,8 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
-                db.SaveChanges();
+                repo.Entry(@event);
+                repo.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(@event);
@@ -96,7 +98,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event = repo.GetEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -109,9 +111,9 @@ namespace ProjectWebApplicatie.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
-            db.SaveChanges();
+            Event @event = repo.GetEvent(id);
+            repo.RemoveEvent(@event);
+            repo.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +121,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                repo.Dispose();
             }
             base.Dispose(disposing);
         }
