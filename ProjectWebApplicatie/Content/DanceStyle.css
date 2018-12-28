@@ -1,0 +1,151 @@
+﻿body{
+    font-family : 'Candara', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	text-align : center;
+	color : white;
+	font-size: 20px;
+}
+
+h1{
+	font-family : 'ConcursoItalian BTN';
+	font-size : 60px;
+	margin : 0;
+}
+
+section{
+	float : left;
+}
+
+.article-group
+{
+	background-image: linear-gradient(red, grey);
+}
+
+.article-left{
+	overflow: auto;
+}
+
+.article-right{
+	overflow: auto;
+}
+
+.article-center{
+	margin-top : 7.5%;
+	margin-left : 32.5%;
+	margin-bottom : 7.5%;
+}
+
+.article-left-image{
+	float : left;
+	width : 50%;
+}
+
+.article-right-image{
+	float : right;
+	width : 50%;
+}
+
+.article-text-left{
+	width : 35%;
+	margin-top : 5%;
+	margin-left : 60%;
+}
+
+.article-text-right{
+	width : 35%;
+	margin-top : 5%;
+	margin-left : 5%;
+}
+
+.article-text-center{
+	width : 55%;
+}
+
+.article-button-center{
+	position: relative;
+    right: 22.5%
+}
+
+footer{
+	clear : both;
+	border-top: 2px solid black;
+	margin-top: 10px;
+	bottom: 0;
+	color : black;
+}
+
+.navbar{
+	width : 100;
+}
+
+ul.navbar.nav{
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.navbar.nav li{
+
+    float: left;
+    border-right:1px solid #bbb;
+	height: 2.5em;
+	display: inline;
+	width: 16.59%;
+}
+
+ul.navbar.nav li a{
+	display: block;
+	text-align: center;
+	vertical-align: middle;
+	padding: 14px 16px;
+	text-decoration: none;
+	background-color: #555;
+}
+
+ul.navbar.nav li a :hover:not(.active){
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+.button-on-image img {
+    height: auto;
+	width: 100%;
+	display : block;
+}
+
+.button-on-image .btn{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.btn{
+	background-color: #555;
+	font-family : 'ConcursoItalian BTN';
+	color: white;
+    font-size: 24px;
+    padding: 12px 24px;
+    border-style: solid;
+    border-width: 0.5px;
+	border-color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#image-button1{
+	transform: translate(-115%, 700%);
+	font-size: 32px;
+}
+
+#image-button2{
+	transform: translate(15%, 700%);
+	font-size: 32px;
+}
+
+.button-on-image.btn:hover {
+    background-color: black;
+}

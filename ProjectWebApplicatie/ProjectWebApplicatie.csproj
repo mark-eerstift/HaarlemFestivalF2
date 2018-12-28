@@ -230,6 +230,18 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DanceStyle.css" />
+    <Content Include="Content\images\afrojack cropped.png" />
+    <Content Include="Content\images\afrojack.jpg" />
+    <Content Include="Content\images\armin van buuren cropped.png" />
+    <Content Include="Content\images\armin van buuren.jpg" />
+    <Content Include="Content\images\DJTiesto cropped.png" />
+    <Content Include="Content\images\DJTiesto.jpg" />
+    <Content Include="Content\images\Hardwell cropped.png" />
+    <Content Include="Content\images\Hardwell.jpg" />
+    <Content Include="Content\images\ProjectVeerplasFestival_mettext.png" />
+    <Content Include="Content\images\VeerplasFestival.jpg" />
+    <Content Include="Content\images\VeerplasFestival.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
