@@ -14,5 +14,7 @@ namespace ProjectWebApplicatie.Models
         public virtual string Locatie { get; set; }
         public virtual DateTime BeginTijd { get; set; }
         public virtual DateTime EindTijd { get; set; }
+
+        
     }
 }

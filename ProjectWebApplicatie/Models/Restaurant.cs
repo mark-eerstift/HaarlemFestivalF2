@@ -7,6 +7,7 @@ namespace ProjectWebApplicatie.Models
 {
     public class Restaurant
     {
-        public string Keukens { get; set; }
+        public string RestaurantName { get; set; }
+        public List<string> Keukens { get; set; }
     }
 }

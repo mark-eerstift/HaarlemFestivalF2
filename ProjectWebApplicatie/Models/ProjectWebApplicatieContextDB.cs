@@ -18,7 +18,7 @@ namespace ProjectWebApplicatie.Models
         public ProjectWebApplicatieContextDB() : base("name=ProjectWebApplicatieContextDB")
         {
         }
-    
+
         public DbSet<ProjectWebApplicatie.Models.Evenement> Evenements { get; set; }
 
         public DbSet<ProjectWebApplicatie.Models.Food> Foods { get; set; }

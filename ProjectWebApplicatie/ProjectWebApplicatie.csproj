@@ -197,13 +197,17 @@
     <Compile Include="Migrations\201812281056142_Database-Update-28-12-2018.Designer.cs">
       <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281344015_evenement-abstract-migration.cs" />
+    <Compile Include="Migrations\201812281344015_evenement-abstract-migration.Designer.cs">
+      <DependentUpon>201812281344015_evenement-abstract-migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
     <Compile Include="Models\CMS.cs" />
     <Compile Include="Models\Dance.cs" />
     <Compile Include="Models\Image.cs" />
-    <Compile Include="Models\JazzDance.cs" />
+    <Compile Include="Models\Jazz.cs" />
     <Compile Include="Models\DayAllPassTicket.cs" />
     <Compile Include="Models\Evenement.cs" />
     <Compile Include="Models\Event.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281056142_Database-Update-28-12-2018.resx">
       <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281344015_evenement-abstract-migration.resx">
+      <DependentUpon>201812281344015_evenement-abstract-migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
