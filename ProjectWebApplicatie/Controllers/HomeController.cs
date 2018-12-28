@@ -26,5 +26,12 @@ namespace ProjectWebApplicatie.Controllers
 
             return View();
         }
+
+        public ActionResult Dance()
+        {
+            ViewBag.Message = "The dance page.";
+
+            return View();
+        }
     }
 }
