@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201812281440439_Evenements-non-abstract.Designer.cs">
       <DependentUpon>201812281440439_Evenements-non-abstract.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281543187_clone-migrate.cs" />
+    <Compile Include="Migrations\201812281543187_clone-migrate.Designer.cs">
+      <DependentUpon>201812281543187_clone-migrate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -351,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281440439_Evenements-non-abstract.resx">
       <DependentUpon>201812281440439_Evenements-non-abstract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281543187_clone-migrate.resx">
+      <DependentUpon>201812281543187_clone-migrate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
