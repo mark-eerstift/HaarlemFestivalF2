@@ -19,7 +19,35 @@ namespace ProjectWebApplicatie.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View(repo.GetVrijWilligersListDb());
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Vrijwilliger vrijwilliger = repo.GetVrijwilligerAccount(model.Username, model.Wachtwoord);
+                if (vrijwilliger != null)
+                {
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
+                    //Setcookie
+                    Session["loggedin_account"] = vrijwilliger;
+                    return RedirectToAction("Index", "Home");
+
+                }
+                else
+                {
+                    ModelState.AddModelError("Login-error", "yo shit wrong my dude");
+                }
+            }
+            return View(model);
         }
 
         // GET: Login/Details/5

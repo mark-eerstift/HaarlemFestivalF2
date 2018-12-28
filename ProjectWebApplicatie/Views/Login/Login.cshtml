@@ -1,0 +1,20 @@
+﻿@model  ProjectWebApplicatie.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Loginpage</h2>
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Username)
+    @Html.TextBoxFor(m => m.Username)
+    @Html.ValidationMessageFor(m => m.Username)
+    <br />
+    @Html.LabelFor(m => m.Wachtwoord)
+    @Html.TextBoxFor(m => m.Wachtwoord)
+    @Html.ValidationMessageFor(m => m.Wachtwoord)
+    <br />
+    <input type="submit" value="Login" />
+}

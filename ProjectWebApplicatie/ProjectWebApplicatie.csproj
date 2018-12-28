@@ -197,9 +197,9 @@
     <Compile Include="Migrations\201812281056142_Database-Update-28-12-2018.Designer.cs">
       <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812281344015_evenement-abstract-migration.cs" />
-    <Compile Include="Migrations\201812281344015_evenement-abstract-migration.Designer.cs">
-      <DependentUpon>201812281344015_evenement-abstract-migration.cs</DependentUpon>
+    <Compile Include="Migrations\201812281418110_loginmodelsss.cs" />
+    <Compile Include="Migrations\201812281418110_loginmodelsss.Designer.cs">
+      <DependentUpon>201812281418110_loginmodelsss.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
@@ -215,6 +215,7 @@
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\FoodEventPage.cs" />
     <Compile Include="Models\History.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProjectWebApplicatieContextDB.cs" />
     <Compile Include="Models\Reservering.cs" />
     <Compile Include="Models\Restaurant.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Dance.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -340,8 +342,8 @@
     <EmbeddedResource Include="Migrations\201812281056142_Database-Update-28-12-2018.resx">
       <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812281344015_evenement-abstract-migration.resx">
-      <DependentUpon>201812281344015_evenement-abstract-migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201812281418110_loginmodelsss.resx">
+      <DependentUpon>201812281418110_loginmodelsss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
