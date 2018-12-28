@@ -9,9 +9,6 @@ namespace ProjectWebApplicatie.Models
     {
         public virtual string Notitie { get; set; }
 
-        public void NotitieMaken()
-        {
-
-        }
+        public void NotitieMaken() { }
     }
 }

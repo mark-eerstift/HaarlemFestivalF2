@@ -7,9 +7,6 @@ namespace ProjectWebApplicatie.Models
 {
     public class FoodEventPage : EventPage
     {
-        public void SorteerOpKeuken()
-        {
-
-        }
+        public void SorteerOpKeuken() { }
     }
 }

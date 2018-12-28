@@ -10,6 +10,7 @@ namespace ProjectWebApplicatie.Models
     {
         [Key]
         public virtual int EvenementID { get; set; }
+        public virtual List<Ticket> AvailableTickets { get; set; }
         public virtual string Locatie { get; set; }
         public virtual DateTime BeginTijd { get; set; }
         public virtual DateTime EindTijd { get; set; }

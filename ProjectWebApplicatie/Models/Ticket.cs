@@ -14,9 +14,6 @@ namespace ProjectWebApplicatie.Models
         public virtual float Prijs { get; set; }
         public virtual bool SaleStatus { get; set; }
 
-        public void IsVerkocht()
-        {
-
-        }
+        public void IsVerkocht() { }
     }
 }

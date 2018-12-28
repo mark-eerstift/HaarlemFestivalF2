@@ -10,6 +10,7 @@ namespace ProjectWebApplicatie.Models
     {
         [Key]
         public virtual int EventId { get; set; }
-        public virtual string eventSoort { get; set; }
+        public virtual string EventSoort { get; set; }
+        public virtual List<EventPage> EventPages { get; set;}
     }
 }
