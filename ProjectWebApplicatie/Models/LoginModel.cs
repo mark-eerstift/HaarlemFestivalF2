@@ -9,7 +9,7 @@ namespace ProjectWebApplicatie.Models
     public class LoginModel
     {
         [Required]
-        [Display(Name= "Username")]
+        [Display(Name = "Username")]
         public string Username { get; set; }
         [Required]
         [Display(Name = "Wachtwoord")]

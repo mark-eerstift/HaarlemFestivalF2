@@ -7,13 +7,13 @@ namespace ProjectWebApplicatie.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class LoginModel : IMigrationMetadata
+    public sealed partial class loginfunctieMark : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(LoginModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(loginfunctieMark));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812281151137_LoginModel"; }
+            get { return "201812281354410_loginfunctieMark"; }
         }
         
         string IMigrationMetadata.Source

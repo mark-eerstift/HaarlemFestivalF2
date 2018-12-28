@@ -19,8 +19,14 @@ namespace ProjectWebApplicatie.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View(repo.GetVrijWilligersListDb());
+            return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public ActionResult Login(LoginModel model)
@@ -33,7 +39,7 @@ namespace ProjectWebApplicatie.Controllers
                     System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
                     //Setcookie
                     Session["loggedin_account"] = vrijwilliger;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Home");
 
                 }
                 else

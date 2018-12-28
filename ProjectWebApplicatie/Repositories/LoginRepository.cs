@@ -48,7 +48,8 @@ namespace ProjectWebApplicatie.Repositories
 
         public Vrijwilliger GetVrijwilligerAccount(string username, string password)
         {
-            return db.Vrijwilligers.Find(username,password);
+
+            return db.Vrijwilligers.Where(u => u.Username == username & u.Wachtwoord == password).FirstOrDefault();
         }
     }
 }
