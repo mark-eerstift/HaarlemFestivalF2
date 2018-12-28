@@ -45,5 +45,10 @@ namespace ProjectWebApplicatie.Repositories
         {
             return db.Vrijwilligers.Find(id);
         }
+
+        public Vrijwilliger GetVrijwilligerAccount(string username, string password)
+        {
+            return db.Vrijwilligers.Find(username,password);
+        }
     }
 }

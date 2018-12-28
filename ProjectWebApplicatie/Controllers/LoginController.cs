@@ -22,6 +22,28 @@ namespace ProjectWebApplicatie.Controllers
             return View(repo.GetVrijWilligersListDb());
         }
 
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Vrijwilliger vrijwilliger = repo.GetVrijwilligerAccount(model.Username, model.Wachtwoord);
+                if (vrijwilliger != null)
+                {
+                    System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
+                    //Setcookie
+                    Session["loggedin_account"] = vrijwilliger;
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    ModelState.AddModelError("Login-error", "yo shit wrong my dude");
+                }
+            }
+            return View(model);
+        }
+
         // GET: Login/Details/5
         public ActionResult Details(int? id)
         {
