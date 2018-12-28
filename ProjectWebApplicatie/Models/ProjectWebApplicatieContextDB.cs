@@ -34,5 +34,7 @@ namespace ProjectWebApplicatie.Models
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Ticket> Tickets { get; set; }
 
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Vrijwilliger> Vrijwilligers { get; set; }
+
+        public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.EventPage> EventPages { get; set; }
     }
 }
