@@ -157,6 +157,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CMSController.cs" />
     <Compile Include="Controllers\EvenementsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Dance.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\CMS\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -374,7 +376,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58270</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
