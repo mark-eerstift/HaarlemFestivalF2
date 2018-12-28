@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201812171548480_JazzDanceApart.Designer.cs">
       <DependentUpon>201812171548480_JazzDanceApart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812281056142_Database-Update-28-12-2018.cs" />
+    <Compile Include="Migrations\201812281056142_Database-Update-28-12-2018.Designer.cs">
+      <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -315,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812171548480_JazzDanceApart.resx">
       <DependentUpon>201812171548480_JazzDanceApart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812281056142_Database-Update-28-12-2018.resx">
+      <DependentUpon>201812281056142_Database-Update-28-12-2018.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
