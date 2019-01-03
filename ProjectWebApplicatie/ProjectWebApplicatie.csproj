@@ -314,10 +314,22 @@
     <Content Include="Views\Home\Dance.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\CMS\Index.cshtml" />
-    <Content Include="Views\CMS\Food.cshtml" />
-    <Content Include="Views\CMS\Jazz.cshtml" />
-    <Content Include="Views\CMS\Dance.cshtml" />
-    <Content Include="Views\CMS\Historic.cshtml" />
+    <Content Include="Views\CMS\Food\Food.cshtml" />
+    <Content Include="Views\CMS\Jazz\Jazz.cshtml" />
+    <Content Include="Views\CMS\Dance\Dance.cshtml" />
+    <Content Include="Views\CMS\Historic\Historic.cshtml" />
+    <Content Include="Views\CMS\Jazz\EditJazzPage.cshtml" />
+    <Content Include="Views\CMS\Jazz\EditJazzSchedule.cshtml" />
+    <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
+    <Content Include="Views\CMS\Food\ViewFoodSales.cshtml" />
+    <Content Include="Views\CMS\Food\EditFoodRestaurants.cshtml" />
+    <Content Include="Views\CMS\Food\EditFoodPage.cshtml" />
+    <Content Include="Views\CMS\Dance\ViewDanceSales.cshtml" />
+    <Content Include="Views\CMS\Dance\EditDanceSchedule.cshtml" />
+    <Content Include="Views\CMS\Dance\EditDancePage.cshtml" />
+    <Content Include="Views\CMS\Historic\ViewHistoricSales.cshtml" />
+    <Content Include="Views\CMS\Historic\EditHistoricSchedule.cshtml" />
+    <Content Include="Views\CMS\Historic\EditHistoricPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
