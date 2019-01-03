@@ -1,7 +1,9 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
+    Layout = null;
 }
+
+
 
 <h2>Haarlem Festival CMS Overview</h2>
 
@@ -9,7 +11,12 @@
 
 <div>
     <h4>Currently Logged in user:</h4>
- <p>
-      @User.Identity.Name"
- </p>
+    <p>
+        @User.Identity.Name"
+    </p>
 </div>
+
+<input type="button" value="Dance" onclick="location.href='@Url.Action("Dance", "CMS")'" />
+<input type="button" value="Jazz" onclick="location.href='@Url.Action("Jazz", "CMS")'" />
+<input type="button" value="Food" onclick="location.href='@Url.Action("Historic", "CMS")'" />
+<input type="button" value="Historic" onclick="location.href='@Url.Action("Food", "CMS")'" />

@@ -314,6 +314,10 @@
     <Content Include="Views\Home\Dance.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\CMS\Index.cshtml" />
+    <Content Include="Views\CMS\Food.cshtml" />
+    <Content Include="Views\CMS\Jazz.cshtml" />
+    <Content Include="Views\CMS\Dance.cshtml" />
+    <Content Include="Views\CMS\Historic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

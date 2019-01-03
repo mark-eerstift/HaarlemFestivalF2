@@ -16,6 +16,30 @@ namespace ProjectWebApplicatie.Controllers
             return View();
         }
 
-        
+        [Authorize]
+        public ActionResult Jazz()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Food()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Dance()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Historic()
+        {
+            return View();
+        }
+
+
     }
 }
