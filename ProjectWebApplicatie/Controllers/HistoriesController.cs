@@ -10,107 +10,107 @@ using ProjectWebApplicatie.Models;
 
 namespace ProjectWebApplicatie.Controllers
 {
-    public class EvenementsController : Controller
+    public class HistoriesController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
 
-        // GET: Evenements
+        // GET: Histories
         public ActionResult Index()
         {
-            return View(db.Evenements.ToList());
+            return View(db.Historys.ToList());
         }
 
-        // GET: Evenements/Details/5
+        // GET: Histories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            History history = db.Historys.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(history);
         }
 
-        // GET: Evenements/Create
+        // GET: Histories/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Evenements/Create
+        // POST: Histories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,EindLocatie,Taal")] History history)
         {
             if (ModelState.IsValid)
             {
-                db.Evenements.Add(evenement);
+                db.Evenements.Add(history);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(evenement);
+            return View(history);
         }
 
-        // GET: Evenements/Edit/5
+        // GET: Histories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            History history = db.Historys.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(history);
         }
 
-        // POST: Evenements/Edit/5
+        // POST: Histories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,EindLocatie,Taal")] History history)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evenement).State = EntityState.Modified;
+                db.Entry(history).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(evenement);
+            return View(history);
         }
 
-        // GET: Evenements/Delete/5
+        // GET: Histories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            History history = db.Historys.Find(id);
+            if (history == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(history);
         }
 
-        // POST: Evenements/Delete/5
+        // POST: Histories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Evenement evenement = db.Evenements.Find(id);
-            db.Evenements.Remove(evenement);
+            History history = db.Historys.Find(id);
+            db.Evenements.Remove(history);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

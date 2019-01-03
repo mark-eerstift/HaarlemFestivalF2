@@ -10,107 +10,107 @@ using ProjectWebApplicatie.Models;
 
 namespace ProjectWebApplicatie.Controllers
 {
-    public class EvenementsController : Controller
+    public class JazzsController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
 
-        // GET: Evenements
+        // GET: Jazzs
         public ActionResult Index()
         {
-            return View(db.Evenements.ToList());
+            return View(db.Jazzs.ToList());
         }
 
-        // GET: Evenements/Details/5
+        // GET: Jazzs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Jazz jazz = db.Jazzs.Find(id);
+            if (jazz == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(jazz);
         }
 
-        // GET: Evenements/Create
+        // GET: Jazzs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Evenements/Create
+        // POST: Jazzs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,Stage,Artiest")] Jazz jazz)
         {
             if (ModelState.IsValid)
             {
-                db.Evenements.Add(evenement);
+                db.Evenements.Add(jazz);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(evenement);
+            return View(jazz);
         }
 
-        // GET: Evenements/Edit/5
+        // GET: Jazzs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Jazz jazz = db.Jazzs.Find(id);
+            if (jazz == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(jazz);
         }
 
-        // POST: Evenements/Edit/5
+        // POST: Jazzs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,Stage,Artiest")] Jazz jazz)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evenement).State = EntityState.Modified;
+                db.Entry(jazz).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(evenement);
+            return View(jazz);
         }
 
-        // GET: Evenements/Delete/5
+        // GET: Jazzs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Jazz jazz = db.Jazzs.Find(id);
+            if (jazz == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(jazz);
         }
 
-        // POST: Evenements/Delete/5
+        // POST: Jazzs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Evenement evenement = db.Evenements.Find(id);
-            db.Evenements.Remove(evenement);
+            Jazz jazz = db.Jazzs.Find(id);
+            db.Evenements.Remove(jazz);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
