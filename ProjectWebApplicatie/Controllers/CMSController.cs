@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace ProjectWebApplicatie.Controllers
 {
     public class CMSController : Controller
@@ -14,5 +15,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             return View();
         }
+
+        
     }
 }

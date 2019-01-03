@@ -3,5 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>WElkom op CMS A niffo</h2>
+<h2>Haarlem Festival CMS Overview</h2>
 
+@Html.ActionLink("Log Out", "LogOff", "Login")
+
+<div>
+    <h4>Currently Logged in user:</h4>
+ <p>
+      @User.Identity.Name"
+ </p>
+</div>

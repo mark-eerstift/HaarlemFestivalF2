@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using ProjectWebApplicatie.Models;
 using ProjectWebApplicatie.Repositories;
 
@@ -28,6 +29,7 @@ namespace ProjectWebApplicatie.Controllers
         }
 
 
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
@@ -39,7 +41,7 @@ namespace ProjectWebApplicatie.Controllers
                     System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
                     //Setcookie
                     Session["loggedin_account"] = vrijwilliger;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "CMS");
 
                 }
                 else
@@ -48,6 +50,13 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
             return View(model);
+        }
+
+        
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Login/Details/5
