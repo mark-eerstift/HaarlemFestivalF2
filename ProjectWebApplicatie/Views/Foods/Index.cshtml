@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProjectWebApplicatie.Models.Evenement>
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Food>
 
 @{
     ViewBag.Title = "Index";
@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.TicketsVerkocht)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant)
+        </th>
         <th></th>
     </tr>
 
@@ -45,6 +48,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TicketsVerkocht)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Restaurant)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EvenementID }) |

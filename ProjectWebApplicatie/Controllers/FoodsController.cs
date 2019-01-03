@@ -10,107 +10,107 @@ using ProjectWebApplicatie.Models;
 
 namespace ProjectWebApplicatie.Controllers
 {
-    public class EvenementsController : Controller
+    public class FoodsController : Controller
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
 
-        // GET: Evenements
+        // GET: Foods
         public ActionResult Index()
         {
-            return View(db.Evenements.ToList());
+            return View(db.Foods.ToList());
         }
 
-        // GET: Evenements/Details/5
+        // GET: Foods/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(food);
         }
 
-        // GET: Evenements/Create
+        // GET: Foods/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Evenements/Create
+        // POST: Foods/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,Restaurant")] Food food)
         {
             if (ModelState.IsValid)
             {
-                db.Evenements.Add(evenement);
+                db.Evenements.Add(food);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(evenement);
+            return View(food);
         }
 
-        // GET: Evenements/Edit/5
+        // GET: Foods/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(food);
         }
 
-        // POST: Evenements/Edit/5
+        // POST: Foods/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht")] Evenement evenement)
+        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,Restaurant")] Food food)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evenement).State = EntityState.Modified;
+                db.Entry(food).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(evenement);
+            return View(food);
         }
 
-        // GET: Evenements/Delete/5
+        // GET: Foods/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+            return View(food);
         }
 
-        // POST: Evenements/Delete/5
+        // POST: Foods/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Evenement evenement = db.Evenements.Find(id);
-            db.Evenements.Remove(evenement);
+            Food food = db.Foods.Find(id);
+            db.Evenements.Remove(food);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

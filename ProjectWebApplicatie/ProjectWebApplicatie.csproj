@@ -158,9 +158,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CMSController.cs" />
+    <Compile Include="Controllers\DancesController.cs" />
     <Compile Include="Controllers\EvenementsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\FoodsController.cs" />
+    <Compile Include="Controllers\HistoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JazzsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +213,18 @@
     <Compile Include="Migrations\201812281543187_clone-migrate.cs" />
     <Compile Include="Migrations\201812281543187_clone-migrate.Designer.cs">
       <DependentUpon>201812281543187_clone-migrate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031325527_DanceModel.cs" />
+    <Compile Include="Migrations\201901031325527_DanceModel.Designer.cs">
+      <DependentUpon>201901031325527_DanceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031336245_NieweControllers.cs" />
+    <Compile Include="Migrations\201901031336245_NieweControllers.Designer.cs">
+      <DependentUpon>201901031336245_NieweControllers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901031345260_LaatsteControllerfix.cs" />
+    <Compile Include="Migrations\201901031345260_LaatsteControllerfix.Designer.cs">
+      <DependentUpon>201901031345260_LaatsteControllerfix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
@@ -330,6 +346,26 @@
     <Content Include="Views\CMS\Historic\ViewHistoricSales.cshtml" />
     <Content Include="Views\CMS\Historic\EditHistoricSchedule.cshtml" />
     <Content Include="Views\CMS\Historic\EditHistoricPage.cshtml" />
+    <Content Include="Views\Dances\Create.cshtml" />
+    <Content Include="Views\Dances\Delete.cshtml" />
+    <Content Include="Views\Dances\Details.cshtml" />
+    <Content Include="Views\Dances\Edit.cshtml" />
+    <Content Include="Views\Dances\Index.cshtml" />
+    <Content Include="Views\Jazzs\Create.cshtml" />
+    <Content Include="Views\Jazzs\Delete.cshtml" />
+    <Content Include="Views\Jazzs\Details.cshtml" />
+    <Content Include="Views\Jazzs\Edit.cshtml" />
+    <Content Include="Views\Jazzs\Index.cshtml" />
+    <Content Include="Views\Foods\Create.cshtml" />
+    <Content Include="Views\Foods\Delete.cshtml" />
+    <Content Include="Views\Foods\Details.cshtml" />
+    <Content Include="Views\Foods\Edit.cshtml" />
+    <Content Include="Views\Foods\Index.cshtml" />
+    <Content Include="Views\Histories\Create.cshtml" />
+    <Content Include="Views\Histories\Delete.cshtml" />
+    <Content Include="Views\Histories\Details.cshtml" />
+    <Content Include="Views\Histories\Edit.cshtml" />
+    <Content Include="Views\Histories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -376,6 +412,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812281543187_clone-migrate.resx">
       <DependentUpon>201812281543187_clone-migrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031325527_DanceModel.resx">
+      <DependentUpon>201901031325527_DanceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031336245_NieweControllers.resx">
+      <DependentUpon>201901031336245_NieweControllers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901031345260_LaatsteControllerfix.resx">
+      <DependentUpon>201901031345260_LaatsteControllerfix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
