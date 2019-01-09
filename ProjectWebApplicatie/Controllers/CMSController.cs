@@ -89,6 +89,22 @@ namespace ProjectWebApplicatie.Controllers
         }
 
         [Authorize]
+        public ActionResult ViewDanceSalesByDate(DateTime date)
+        {
+            List<Dance> dances = new List<Dance>();
+            dances = db.Dances.ToList();
+            foreach(Dance d in dances)
+            {
+                if(d.BeginTijd != date)
+                {
+                    dances.Remove(d);
+                }
+            }
+
+            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
+        }
+
+        [Authorize]
         public ActionResult EditDanceSchedule()
         {
             return View("~/Views/CMS/Dance/EditDanceSchedule.cshtml");
