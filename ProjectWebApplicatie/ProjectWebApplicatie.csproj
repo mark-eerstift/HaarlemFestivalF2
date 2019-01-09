@@ -354,11 +354,8 @@
     <Content Include="Views\CMS\Historic\ViewHistoricSales.cshtml" />
     <Content Include="Views\CMS\Historic\EditHistoricSchedule.cshtml" />
     <Content Include="Views\CMS\Historic\EditHistoricPage.cshtml" />
-    <Content Include="Views\Dances\Create.cshtml" />
     <Content Include="Views\Dances\Delete.cshtml" />
     <Content Include="Views\Dances\Details.cshtml" />
-    <Content Include="Views\Dances\Edit.cshtml" />
-    <Content Include="Views\Dances\Index.cshtml" />
     <Content Include="Views\Jazzs\Create.cshtml" />
     <Content Include="Views\Jazzs\Delete.cshtml" />
     <Content Include="Views\Jazzs\Details.cshtml" />
@@ -370,6 +367,9 @@
     <Content Include="Views\Histories\Edit.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
     <Content Include="Views\Foods\Create.cshtml" />
+    <Content Include="Views\Dances\Create.cshtml" />
+    <Content Include="Views\Dances\Index.cshtml" />
+    <Content Include="Views\Dances\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
