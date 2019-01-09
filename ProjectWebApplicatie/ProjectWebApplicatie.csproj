@@ -226,6 +226,14 @@
     <Compile Include="Migrations\201901031345260_LaatsteControllerfix.Designer.cs">
       <DependentUpon>201901031345260_LaatsteControllerfix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901090945279_prijs_keukenstijl_migration.cs" />
+    <Compile Include="Migrations\201901090945279_prijs_keukenstijl_migration.Designer.cs">
+      <DependentUpon>201901090945279_prijs_keukenstijl_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901090955542_EvenementPrijs_Migration.cs" />
+    <Compile Include="Migrations\201901090955542_EvenementPrijs_Migration.Designer.cs">
+      <DependentUpon>201901090955542_EvenementPrijs_Migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -356,16 +364,12 @@
     <Content Include="Views\Jazzs\Details.cshtml" />
     <Content Include="Views\Jazzs\Edit.cshtml" />
     <Content Include="Views\Jazzs\Index.cshtml" />
-    <Content Include="Views\Foods\Create.cshtml" />
-    <Content Include="Views\Foods\Delete.cshtml" />
-    <Content Include="Views\Foods\Details.cshtml" />
-    <Content Include="Views\Foods\Edit.cshtml" />
-    <Content Include="Views\Foods\Index.cshtml" />
     <Content Include="Views\Histories\Create.cshtml" />
     <Content Include="Views\Histories\Delete.cshtml" />
     <Content Include="Views\Histories\Details.cshtml" />
     <Content Include="Views\Histories\Edit.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
+    <Content Include="Views\Foods\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -421,6 +425,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901031345260_LaatsteControllerfix.resx">
       <DependentUpon>201901031345260_LaatsteControllerfix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901090945279_prijs_keukenstijl_migration.resx">
+      <DependentUpon>201901090945279_prijs_keukenstijl_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901090955542_EvenementPrijs_Migration.resx">
+      <DependentUpon>201901090955542_EvenementPrijs_Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
