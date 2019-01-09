@@ -1,7 +1,67 @@
-﻿
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Dance>
+
 @{
     ViewBag.Title = "ViewDanceSales";
 }
 
-<h2>ViewDanceSales</h2>
+<h2>View Dance Sales</h2>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Locatie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BeginTijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EindTijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketsTotaal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketsVerkocht)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Session)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artiest)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketsTotaal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketsVerkocht)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Session)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artiest)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EvenementID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EvenementID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EvenementID })
+            </td>
+        </tr>
+    }
+
+</table>

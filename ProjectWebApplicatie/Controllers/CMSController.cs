@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ProjectWebApplicatie.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,6 +11,8 @@ namespace ProjectWebApplicatie.Controllers
 {
     public class CMSController : Controller
     {
+
+        private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
         // GET: CMS
         [Authorize]
         public ActionResult Index()
@@ -35,9 +39,12 @@ namespace ProjectWebApplicatie.Controllers
         }
 
         [Authorize]
-        public ActionResult ViewJazzSales()
+        public ActionResult ViewJazzSales(int id)
         {
             return View("~/Views/CMS/Jazz/ViewJazzSales.cshtml");
+
+
+
         }
 
 
@@ -75,7 +82,8 @@ namespace ProjectWebApplicatie.Controllers
         [Authorize]
         public ActionResult ViewDanceSales()
         {
-            return View("~/Views/CMS/Dance/ViewDanceSales.cshtml");
+            List<Dance> Dances = new List<Dance>();
+            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), Dances);
         }
 
         [Authorize]
