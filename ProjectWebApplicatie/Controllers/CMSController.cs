@@ -93,13 +93,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             List<Dance> dances = new List<Dance>();
             dances = db.Dances.ToList();
-            foreach(Dance d in dances)
-            {
-                if(d.BeginTijd != date)
-                {
-                    dances.Remove(d);
-                }
-            }
+            dances.RemoveAll(Dance => Dance.BeginTijd.Date != date.Date);
 
             return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
         }
