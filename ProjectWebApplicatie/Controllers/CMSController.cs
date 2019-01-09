@@ -82,8 +82,10 @@ namespace ProjectWebApplicatie.Controllers
         [Authorize]
         public ActionResult ViewDanceSales()
         {
-            List<Dance> Dances = new List<Dance>();
-            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), Dances);
+            List<Dance> dances = new List<Dance>();
+            dances = db.Dances.ToList();
+            
+            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
         }
 
         [Authorize]
