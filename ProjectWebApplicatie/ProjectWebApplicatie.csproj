@@ -269,6 +269,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DanceStyle.css" />
+    <Content Include="Content\HistoricStyle.css" />
     <Content Include="Content\images\afrojack cropped.png" />
     <Content Include="Content\images\afrojack.jpg" />
     <Content Include="Content\images\armin van buuren cropped.png" />
@@ -277,6 +278,9 @@
     <Content Include="Content\images\DJTiesto.jpg" />
     <Content Include="Content\images\Hardwell cropped.png" />
     <Content Include="Content\images\Hardwell.jpg" />
+    <Content Include="Content\images\historic\HeaderImg.png" />
+    <Content Include="Content\images\historic\HomeOne.png" />
+    <Content Include="Content\images\historic\HomeTwo.png" />
     <Content Include="Content\images\ProjectVeerplasFestival_mettext.png" />
     <Content Include="Content\images\VeerplasFestival.jpg" />
     <Content Include="Content\images\VeerplasFestival.png" />
@@ -370,6 +374,7 @@
     <Content Include="Views\Histories\Create.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
     <Content Include="Views\Histories\Edit.cshtml" />
+    <Content Include="Views\Home\Historic.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

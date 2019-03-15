@@ -1,0 +1,108 @@
+﻿body {
+    background-image: linear-gradient(#404040, #b82756);
+    margin: 0;
+    color: white;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+    width: 40%;
+    padding: 5px;
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    font-size: 5em;
+    padding-top: 2em;
+    text-shadow: 2px 2px 4px #b82756, -2px -2px 4px #b82756;
+}
+
+h1, h2 {
+    font-family: Georgia, serif;
+}
+
+img {
+    overflow: auto;
+    max-width: 50%;
+}
+
+article {
+    margin: 1em 10em;
+    display: inline-block;
+}
+
+header {
+    background-image: Url(images/historic/HeaderImg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-bottom: 15em;
+}
+
+.button {
+    background-color: #404040;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px 100px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+nav {
+    width: 100%;
+    text-align: center;
+    background-color: #404040;
+}
+
+nav ul {
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: left;
+    width: 19.05%;
+    border-style: solid;
+    border-color: #404040;
+    border-width: 2px;
+    background-color: #404040;
+    min-width: 10em;
+}
+
+nav li a {
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+nav li a:hover, .active {
+    background-color: #b82756;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}

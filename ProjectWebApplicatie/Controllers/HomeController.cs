@@ -33,5 +33,12 @@ namespace ProjectWebApplicatie.Controllers
 
             return View();
         }
+
+        public ActionResult Historic()
+        {
+            ViewBag.Message = "The history page.";
+
+            return View();
+        }
     }
 }
