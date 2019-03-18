@@ -1,0 +1,14 @@
+﻿li {
+    color: white;
+    text-align: center;
+    position: relative;
+    display: inline-block !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+nav li {
+    display: inline-block !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+

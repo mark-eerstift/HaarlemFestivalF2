@@ -284,6 +284,7 @@
     <Content Include="Content\images\ProjectVeerplasFestival_mettext.png" />
     <Content Include="Content\images\VeerplasFestival.jpg" />
     <Content Include="Content\images\VeerplasFestival.png" />
+    <Content Include="Content\CMS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -334,11 +335,6 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
-    <Content Include="Views\Login\Create.cshtml" />
-    <Content Include="Views\Login\Delete.cshtml" />
-    <Content Include="Views\Login\Details.cshtml" />
-    <Content Include="Views\Login\Edit.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Dance.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\CMS\Index.cshtml" />
@@ -374,7 +370,11 @@
     <Content Include="Views\Histories\Create.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
     <Content Include="Views\Histories\Edit.cshtml" />
+<<<<<<< Updated upstream
     <Content Include="Views\Home\Historic.cshtml" />
+=======
+    <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,18 +3,15 @@
     Layout = null;
 }
 
-
+@{
+    Layout = "~/Views/Shared/_MyCMSLayout.cshtml";
+}
 
 <h2>Haarlem Festival CMS Overview</h2>
 
-@Html.ActionLink("Log Out", "LogOff", "Login")
 
-<div>
-    <h4>Currently Logged in user:</h4>
-    <p>
-        @User.Identity.Name"
-    </p>
-</div>
+
+
 
 <input type="button" value="Dance" onclick="location.href='@Url.Action("Dance", "CMS")'" />
 <input type="button" value="Jazz" onclick="location.href='@Url.Action("Jazz", "CMS")'" />
