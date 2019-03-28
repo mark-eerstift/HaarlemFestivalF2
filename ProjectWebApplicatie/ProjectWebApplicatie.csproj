@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201903282002396_SaltToVrijwilligerTabel.Designer.cs">
       <DependentUpon>201903282002396_SaltToVrijwilligerTabel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903282020262_EmailInVrijwilliger.cs" />
+    <Compile Include="Migrations\201903282020262_EmailInVrijwilliger.Designer.cs">
+      <DependentUpon>201903282020262_EmailInVrijwilliger.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -377,6 +381,7 @@
     <Content Include="Views\Home\Historic.cshtml" />
     <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -441,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903282002396_SaltToVrijwilligerTabel.resx">
       <DependentUpon>201903282002396_SaltToVrijwilligerTabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903282020262_EmailInVrijwilliger.resx">
+      <DependentUpon>201903282020262_EmailInVrijwilliger.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

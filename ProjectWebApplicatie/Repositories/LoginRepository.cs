@@ -51,5 +51,11 @@ namespace ProjectWebApplicatie.Repositories
 
             return db.Vrijwilligers.Where(u => u.Username == username).FirstOrDefault();
         }
+
+        public Vrijwilliger GetVrijwilligerAccountByEmail(string email)
+        {
+
+            return db.Vrijwilligers.Where(u => u.Email == email).FirstOrDefault();
+        }
     }
 }

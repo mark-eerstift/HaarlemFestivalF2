@@ -95,7 +95,7 @@ namespace ProjectWebApplicatie.Controllers
         //Stopt deze vrijwilliger in de database.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Username,Wachtwoord")] Vrijwilliger vrijwilliger)
+        public ActionResult Create([Bind(Include = "UserId,Username,Wachtwoord,Email")] Vrijwilliger vrijwilliger)
         {
             if (ModelState.IsValid)
             {
@@ -163,6 +163,28 @@ namespace ProjectWebApplicatie.Controllers
             }
             return View(vrijwilliger);
         }
+
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        public ActionResult ForgotPassword([Bind(Include = "Email")] Vrijwilliger vrijwilliger)
+        {
+            if (ModelState.IsValid)
+
+            {
+                if (repo.GetVrijwilligerAccountByEmail(vrijwilliger.Email) != null)
+                {
+                    //Hier code om password reset te senden. 
+                }
+
+            }
+
+            return View(vrijwilliger);
+        }
+
 
         // GET: Login/Delete/5
         public ActionResult Delete(int? id)

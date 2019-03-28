@@ -18,6 +18,7 @@ namespace ProjectWebApplicatie.Repositories
         Vrijwilliger GetVrijwilliger(int? id);
 
         Vrijwilliger GetVrijwilligerAccount(string username);
+        Vrijwilliger GetVrijwilligerAccountByEmail(string email);
         
     }
 }
