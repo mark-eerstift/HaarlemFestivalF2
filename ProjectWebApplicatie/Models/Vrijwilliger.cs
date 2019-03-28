@@ -14,6 +14,7 @@ namespace ProjectWebApplicatie.Models
         public virtual string Username { get; set; }
         public virtual string Wachtwoord { get; set; }
         public virtual String salt { get; set; }
+        public virtual string Email { get; set; }
 
         public void LogIn() { }
         public void LogUit() { }

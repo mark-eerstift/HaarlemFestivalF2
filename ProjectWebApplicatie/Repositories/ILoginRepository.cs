@@ -17,7 +17,7 @@ namespace ProjectWebApplicatie.Repositories
         IEnumerable<Vrijwilliger> GetVrijWilligersListDb();
         Vrijwilliger GetVrijwilliger(int? id);
 
-        Vrijwilliger GetVrijwilligerAccount(string username, string password);
+        Vrijwilliger GetVrijwilligerAccount(string username);
         
     }
 }

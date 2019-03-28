@@ -35,12 +35,23 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                Vrijwilliger vrijwilliger = repo.GetVrijwilligerAccount(model.Username, model.Wachtwoord);
+
+                
+
+
+                Vrijwilliger vrijwilliger = repo.GetVrijwilligerAccount(model.Username);
                 if (vrijwilliger != null)
                 {
-                    System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
-                    //Setcookie
-                    Session["loggedin_account"] = vrijwilliger;
+
+                    string salt = vrijwilliger.salt;
+                    string hashedpassword = GenerateSHA256Hash(model.Wachtwoord, salt);
+                    if (vrijwilliger.Wachtwoord == hashedpassword) ;
+                    {
+
+                        System.Web.Security.FormsAuthentication.SetAuthCookie(vrijwilliger.Username, false);
+                        //Setcookie
+                        Session["loggedin_account"] = vrijwilliger;
+                    }
                     return RedirectToAction("Index", "CMS");
 
                 }
@@ -80,7 +91,8 @@ namespace ProjectWebApplicatie.Controllers
             return View();
         }
 
-        //roept de salt en hash functies aan, stopt dit hashed password in de vrijwilliger. Stopt deze vrijwilliger in de database.
+        //roept de salt en hash functies aan, stopt dit hashed password in de vrijwilliger. Stopt tevens de salt in de vrijwilliger.
+        //Stopt deze vrijwilliger in de database.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,Username,Wachtwoord")] Vrijwilliger vrijwilliger)
@@ -89,6 +101,7 @@ namespace ProjectWebApplicatie.Controllers
             {
                 String salt = CreateSalt(10);
                 String hashedPassword = GenerateSHA256Hash(vrijwilliger.Wachtwoord, salt);
+                vrijwilliger.salt = salt;
                 vrijwilliger.Wachtwoord = hashedPassword;
                 repo.AddVrijwilliger(vrijwilliger);
                 repo.SaveChanges();
