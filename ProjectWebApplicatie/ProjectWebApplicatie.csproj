@@ -372,6 +372,7 @@
     <Content Include="Views\Histories\Edit.cshtml" />
     <Content Include="Views\Home\Historic.cshtml" />
     <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
+    <Content Include="Views\Login\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

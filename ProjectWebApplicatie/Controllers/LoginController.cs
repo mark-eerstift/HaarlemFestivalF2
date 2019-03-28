@@ -80,15 +80,16 @@ namespace ProjectWebApplicatie.Controllers
             return View();
         }
 
-        // POST: Login/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //roept de salt en hash functies aan, stopt dit hashed password in de vrijwilliger. Stopt deze vrijwilliger in de database.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "UserId,Username,Wachtwoord")] Vrijwilliger vrijwilliger)
         {
             if (ModelState.IsValid)
             {
+                String salt = CreateSalt(10);
+                String hashedPassword = GenerateSHA256Hash(vrijwilliger.Wachtwoord, salt);
+                vrijwilliger.Wachtwoord = hashedPassword;
                 repo.AddVrijwilliger(vrijwilliger);
                 repo.SaveChanges();
                 return RedirectToAction("Index");
@@ -96,6 +97,28 @@ namespace ProjectWebApplicatie.Controllers
 
             return View(vrijwilliger);
         }
+
+        //Maakt een array van bytes aan op basis van de size die hij meekrijgt. 
+        public String CreateSalt(int size)
+        {
+            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
+            byte[] buff = new byte[size];
+            rng.GetBytes(buff);
+            return Convert.ToBase64String(buff);
+
+
+        }
+
+        //Maakt een byte array van de input en de Salt. En returned deze als string voor netheid. 
+        public String GenerateSHA256Hash(String input, String salt)
+        {
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
+            System.Security.Cryptography.SHA256Managed sha256hashstring = new System.Security.Cryptography.SHA256Managed();
+            byte[] hash = sha256hashstring.ComputeHash(bytes);
+
+            return Convert.ToBase64String(hash);
+        }
+
 
         // GET: Login/Edit/5
         public ActionResult Edit(int? id)
