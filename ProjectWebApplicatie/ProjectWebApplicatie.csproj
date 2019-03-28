@@ -370,11 +370,8 @@
     <Content Include="Views\Histories\Create.cshtml" />
     <Content Include="Views\Histories\Index.cshtml" />
     <Content Include="Views\Histories\Edit.cshtml" />
-<<<<<<< Updated upstream
     <Content Include="Views\Home\Historic.cshtml" />
-=======
     <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
