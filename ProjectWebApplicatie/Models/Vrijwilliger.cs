@@ -13,6 +13,7 @@ namespace ProjectWebApplicatie.Models
         public virtual int UserId { get; set; }
         public virtual string Username { get; set; }
         public virtual string Wachtwoord { get; set; }
+        public virtual String salt { get; set; }
 
         public void LogIn() { }
         public void LogUit() { }

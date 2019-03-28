@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201901090955542_EvenementPrijs_Migration.Designer.cs">
       <DependentUpon>201901090955542_EvenementPrijs_Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903282002396_SaltToVrijwilligerTabel.cs" />
+    <Compile Include="Migrations\201903282002396_SaltToVrijwilligerTabel.Designer.cs">
+      <DependentUpon>201903282002396_SaltToVrijwilligerTabel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -434,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901090955542_EvenementPrijs_Migration.resx">
       <DependentUpon>201901090955542_EvenementPrijs_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903282002396_SaltToVrijwilligerTabel.resx">
+      <DependentUpon>201903282002396_SaltToVrijwilligerTabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
