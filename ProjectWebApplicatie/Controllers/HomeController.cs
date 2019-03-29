@@ -43,7 +43,14 @@ namespace ProjectWebApplicatie.Controllers
 
         public ActionResult Food()
         {
-            ViewBag.Message = "The history page.";
+            ViewBag.Message = "The Food page.";
+
+            return View();
+        }
+
+        public ActionResult FoodPurchase()
+        {
+            ViewBag.Message = "The Food Purchase page.";
 
             return View();
         }
