@@ -9,7 +9,7 @@ namespace ProjectWebApplicatie.Models
     public class Evenement
     {
         [Key]
-        public virtual int EvenementID { get; set; }
+        public virtual int EvenementId { get; set; }
         public virtual List<Ticket> AvailableTickets { get; set; }
         public virtual string Locatie { get; set; }
         public virtual DateTime BeginTijd { get; set; }

@@ -9,9 +9,9 @@ namespace ProjectWebApplicatie.Models
     public class CartItem
     {
         [Key]
-        public string ItemID { get; set; }
+        public string ItemId { get; set; }
 
-        public string CartID { get; set; }
+        public string CartId { get; set; }
 
         public int Quantity { get; set; }
 
