@@ -245,6 +245,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\CMS.cs" />
     <Compile Include="Models\Dance.cs" />
     <Compile Include="Models\Image.cs" />

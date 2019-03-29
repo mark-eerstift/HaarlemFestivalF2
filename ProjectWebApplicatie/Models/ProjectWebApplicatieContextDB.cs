@@ -29,6 +29,8 @@ namespace ProjectWebApplicatie.Models
 
         public DbSet<ProjectWebApplicatie.Models.Dance> Dances { get; set; }
 
+        public DbSet<CartItem> CartItems { get; set; }
+
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Event> Events { get; set; }
 
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Ticket> Tickets { get; set; }
@@ -36,5 +38,6 @@ namespace ProjectWebApplicatie.Models
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.Vrijwilliger> Vrijwilligers { get; set; }
 
         public System.Data.Entity.DbSet<ProjectWebApplicatie.Models.EventPage> EventPages { get; set; }
+
     }
 }
