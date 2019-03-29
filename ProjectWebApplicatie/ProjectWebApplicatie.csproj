@@ -346,22 +346,7 @@
     <Content Include="Views\Home\Dance.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\CMS\Index.cshtml" />
-    <Content Include="Views\CMS\Food\Food.cshtml" />
-    <Content Include="Views\CMS\Jazz\Jazz.cshtml" />
-    <Content Include="Views\CMS\Dance\Dance.cshtml" />
-    <Content Include="Views\CMS\Historic\Historic.cshtml" />
-    <Content Include="Views\CMS\Jazz\EditJazzPage.cshtml" />
-    <Content Include="Views\CMS\Jazz\EditJazzSchedule.cshtml" />
-    <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
-    <Content Include="Views\CMS\Food\ViewFoodSales.cshtml" />
-    <Content Include="Views\CMS\Food\EditFoodRestaurants.cshtml" />
-    <Content Include="Views\CMS\Food\EditFoodPage.cshtml" />
     <Content Include="Views\CMS\Dance\ViewDanceSales.cshtml" />
-    <Content Include="Views\CMS\Dance\EditDanceSchedule.cshtml" />
-    <Content Include="Views\CMS\Dance\EditDancePage.cshtml" />
-    <Content Include="Views\CMS\Historic\ViewHistoricSales.cshtml" />
-    <Content Include="Views\CMS\Historic\EditHistoricSchedule.cshtml" />
-    <Content Include="Views\CMS\Historic\EditHistoricPage.cshtml" />
     <Content Include="Views\Dances\Delete.cshtml" />
     <Content Include="Views\Dances\Details.cshtml" />
     <Content Include="Views\Jazzs\Create.cshtml" />
@@ -371,7 +356,6 @@
     <Content Include="Views\Jazzs\Index.cshtml" />
     <Content Include="Views\Histories\Delete.cshtml" />
     <Content Include="Views\Histories\Details.cshtml" />
-    <Content Include="Views\Foods\Create.cshtml" />
     <Content Include="Views\Dances\Create.cshtml" />
     <Content Include="Views\Dances\Index.cshtml" />
     <Content Include="Views\Dances\Edit.cshtml" />
@@ -382,6 +366,25 @@
     <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\CMS\Dance\Delete.cshtml" />
+    <Content Include="Views\CMS\Dance\Index.cshtml" />
+    <Content Include="Views\CMS\Dance\Edit.cshtml" />
+    <Content Include="Views\CMS\Dance\Create.cshtml" />
+    <Content Include="Views\CMS\Food\Create.cshtml" />
+    <Content Include="Views\CMS\Food\Delete.cshtml" />
+    <Content Include="Views\CMS\Food\Details.cshtml" />
+    <Content Include="Views\CMS\Food\Edit.cshtml" />
+    <Content Include="Views\CMS\Food\Index.cshtml" />
+    <Content Include="Views\CMS\Historic\Create.cshtml" />
+    <Content Include="Views\CMS\Historic\Delete.cshtml" />
+    <Content Include="Views\CMS\Historic\Details.cshtml" />
+    <Content Include="Views\CMS\Historic\Edit.cshtml" />
+    <Content Include="Views\CMS\Historic\Index.cshtml" />
+    <Content Include="Views\CMS\Jazz\Create.cshtml" />
+    <Content Include="Views\CMS\Jazz\Delete.cshtml" />
+    <Content Include="Views\CMS\Jazz\Details.cshtml" />
+    <Content Include="Views\CMS\Jazz\Edit.cshtml" />
+    <Content Include="Views\CMS\Jazz\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

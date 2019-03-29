@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Manage Food Events";
+
+}
+
+
+@{
+    var test = new ProjectWebApplicatie.Models.Food();
+
+}
+
+<h2>Manage Food Events</h2>
+
+
+
+
+
+<input type="button" value="View Food Sales" onclick="location.href='@Url.Action("ViewEventSales", "CMS", new {Food = test})'" />
+<input type="button" value="Create Food event" onclick="location.href='@Url.Action("Create", "CMS")'" />
+<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS")'" />
+<input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
