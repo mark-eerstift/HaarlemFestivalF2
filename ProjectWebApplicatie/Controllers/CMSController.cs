@@ -209,7 +209,7 @@ namespace ProjectWebApplicatie.Controllers
                 jazzs = db.Jazzs.ToList();
                 jazzs.RemoveAll(Jazz => Jazz.BeginTijd.Date != date.Date);
 
-                return View(("~/Views/CMS/Dance/ViewJazzSales.cshtml"), jazzs);
+                return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
             else if (eventstring == "history")
             {
@@ -217,7 +217,7 @@ namespace ProjectWebApplicatie.Controllers
                 histories = db.Historys.ToList();
                 histories.RemoveAll(History => History.BeginTijd.Date != date.Date);
 
-                return View(("~/Views/CMS/Dance/ViewHistorySales.cshtml"), histories);
+                return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
             else if (eventstring == "food")
             {
@@ -225,7 +225,7 @@ namespace ProjectWebApplicatie.Controllers
                 foods = db.Foods.ToList();
                 foods.RemoveAll(Food => Food.BeginTijd.Date != date.Date);
 
-                return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), foods);
+                return View(("~/Views/CMS/Food/ViewDanceSales.cshtml"), foods);
             }
 
 
