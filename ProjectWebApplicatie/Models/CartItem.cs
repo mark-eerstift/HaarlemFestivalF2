@@ -17,6 +17,8 @@ namespace ProjectWebApplicatie.Models
 
         public System.DateTime TijdstipAangemaakt { get; set; }
 
+        public int TicketId { get; set; }
+
         public virtual Ticket Ticket { get; set; }
     }
 }

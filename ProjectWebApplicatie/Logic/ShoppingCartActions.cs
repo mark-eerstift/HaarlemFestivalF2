@@ -21,19 +21,19 @@ namespace ProjectWebApplicatie.Logic
 
             var cartItem = db.CartItems.SingleOrDefault(
                 c => c.CartId == ShoppingCartId
-                && c. == id);
+                && c.TicketId == id);
             if (cartItem == null)
             {
                 // Create a new cart item if no cart item exists.                 
                 cartItem = new CartItem
                 {
                     ItemId = Guid.NewGuid().ToString(),
-                    ProductId = id,
+                    TicketId = id,
                     CartId = ShoppingCartId,
-                    Product = _db.Products.SingleOrDefault(
-                   p => p.ProductID == id),
+                    Ticket = db.Tickets.SingleOrDefault(
+                   p => p.TicketID == id),
                     Quantity = 1,
-                    DateCreated = DateTime.Now
+                    TijdstipAangemaakt = DateTime.Now
                 };
 
                 db.CartItems.Add(cartItem);
