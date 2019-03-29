@@ -191,8 +191,46 @@ namespace ProjectWebApplicatie.Controllers
 
             return View("~/Views/CMS/Index.cshtml");
         }
-            
-        
+
+        [Authorize]
+        public ActionResult ViewEventSalesByDate(Dance dance, Jazz jazz, History history, Food food, DateTime date)
+        {
+            if (dance == null)
+            {
+                List<Dance> dances = new List<Dance>();
+                dances = db.Dances.ToList();
+                dances.RemoveAll(Dance => Dance.BeginTijd.Date != date.Date);
+
+                return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
+            }
+            else if (jazz == null)
+            {
+                List<Jazz> jazzs = new List<Jazz>();
+                jazzs = db.Jazzs.ToList();
+                jazzs.RemoveAll(Jazz => Jazz.BeginTijd.Date != date.Date);
+
+                return View(("~/Views/CMS/Dance/ViewJazzSales.cshtml"), jazzs);
+            }
+            else if (history == null)
+            {
+                List<History> histories = new List<History>();
+                histories = db.Historys.ToList();
+                histories.RemoveAll(History => History.BeginTijd.Date != date.Date);
+
+                return View(("~/Views/CMS/Dance/ViewHistorySales.cshtml"), histories);
+            }
+            else if (food == null)
+            {
+                List<Food> foods = new List<Food>();
+                foods = db.Foods.ToList();
+                foods.RemoveAll(Food => Food.BeginTijd.Date != date.Date);
+
+                return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), food);
+            }
+
+
+            return View("~/Views/CMS/Index.cshtml");
+        }
 
 
 
@@ -212,28 +250,28 @@ namespace ProjectWebApplicatie.Controllers
 
 
         [Authorize]
-        public ActionResult ViewJazzSales()
+        public ActionResult Jazz()
         {
-            List<Jazz> jazz = new List<Jazz>();
-            jazz = db.Jazzs.ToList();
-
-            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), jazz);
+            return View("~/Views/CMS/Jazz/Index.cshtml");
         }
-
 
         [Authorize]
-        public ActionResult ViewJazzSalesByDate(DateTime date)
+        public ActionResult Food()
         {
-            List<Jazz> jazz = new List<Jazz>();
-            jazz = db.Jazzs.ToList();
-            jazz.RemoveAll(Jazz => Jazz.BeginTijd.Date != date.Date);
-
-            return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), jazz);
+            return View("~/Views/CMS/Food/Index.cshtml");
         }
 
+        [Authorize]
+        public ActionResult Dance()
+        {
+            return View("~/Views/CMS/Dance/Index.cshtml");
+        }
 
-
-
+        [Authorize]
+        public ActionResult Historic()
+        {
+            return View("~/Views/CMS/Historic/Index.cshtml");
+        }
 
 
     }

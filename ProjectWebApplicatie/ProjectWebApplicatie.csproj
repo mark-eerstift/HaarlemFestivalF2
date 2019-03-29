@@ -385,6 +385,9 @@
     <Content Include="Views\CMS\Jazz\Details.cshtml" />
     <Content Include="Views\CMS\Jazz\Edit.cshtml" />
     <Content Include="Views\CMS\Jazz\Index.cshtml" />
+    <Content Include="Views\CMS\Food\ViewFoodSales.cshtml" />
+    <Content Include="Views\CMS\Historic\ViewHistorySales.cshtml" />
+    <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
