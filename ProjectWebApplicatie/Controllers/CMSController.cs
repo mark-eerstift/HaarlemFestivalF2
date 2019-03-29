@@ -19,7 +19,7 @@ namespace ProjectWebApplicatie.Controllers
         // GET: CMSTest
         public ActionResult Index()
         {
-            return View("~/Views/CMS/Dance/Index.cshtml", db.Evenements.ToList());
+            return View("~/Views/CMS/Index.cshtml", db.Evenements.ToList());
         }
 
         // GET: CMSTest/Details/5

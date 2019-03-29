@@ -13,7 +13,7 @@
 
 
 
-<input type="button" value="Dance" onclick="location.href='@Url.Action("Dance", "CMS")'" />
+ @Html.ActionLink("Dance","/Dance/Index.cshtml", "CMS", null, null)
 <input type="button" value="Jazz" onclick="location.href='@Url.Action("Jazz", "CMS")'" />
 <input type="button" value="Food" onclick="location.href='@Url.Action("Historic", "CMS")'" />
 <input type="button" value="Historic" onclick="location.href='@Url.Action("Food", "CMS")'" />

@@ -52,7 +52,7 @@ namespace ProjectWebApplicatie.Controllers
                         //Setcookie
                         Session["loggedin_account"] = vrijwilliger;
                     }
-                    return RedirectToAction("Index", "CMS");
+                    return RedirectToAction("Index","CMS");
 
                 }
                 else
