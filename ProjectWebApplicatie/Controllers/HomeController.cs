@@ -40,5 +40,12 @@ namespace ProjectWebApplicatie.Controllers
 
             return View();
         }
+
+        public ActionResult Food()
+        {
+            ViewBag.Message = "The history page.";
+
+            return View();
+        }
     }
 }
