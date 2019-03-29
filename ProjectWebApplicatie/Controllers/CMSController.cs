@@ -165,24 +165,24 @@ namespace ProjectWebApplicatie.Controllers
 
         //Maakt in de desbetreffende view een Null object aan van de benodigde event. Checkt of de event null is en zo ja, laadt de pagina.
         [Authorize]
-        public ActionResult ViewEventSales(string eventstring, Dance dance, Jazz jazz, History history, Food food)
+        public ActionResult ViewEventSales(string eventstring)
         {
-            if (dance == null)
+            if (eventstring == "dance")
             {
                 List<Dance> dances = db.Dances.ToList();
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (jazz == null)
+            else if (eventstring == "jazz")
             {
                 List<Jazz> jazzs = db.Jazzs.ToList();
                 return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (history == null)
+            else if (eventstring == "history")
             {
                 List<History> histories = db.Historys.ToList();
                 return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
-            else if (food == null)
+            else if (eventstring == "food")
             {
                 List<Food> foods = db.Foods.ToList();
                 return View(("~/Views/CMS/Food/ViewFoodSales.cshtml"), foods);
@@ -203,7 +203,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (eventstring == null)
+            else if (eventstring == "jazz")
             {
                 List<Jazz> jazzs = new List<Jazz>();
                 jazzs = db.Jazzs.ToList();
@@ -211,7 +211,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Dance/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (eventstring == null)
+            else if (eventstring == "history")
             {
                 List<History> histories = new List<History>();
                 histories = db.Historys.ToList();
@@ -219,7 +219,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Dance/ViewHistorySales.cshtml"), histories);
             }
-            else if (eventstring == null)
+            else if (eventstring == "food")
             {
                 List<Food> foods = new List<Food>();
                 foods = db.Foods.ToList();

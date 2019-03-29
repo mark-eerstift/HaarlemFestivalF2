@@ -15,7 +15,7 @@
 
 
 
-<input type="button" value="View Dance Sales" onclick="location.href = "@Url.Action("PasswordChange", "UserPassword", new { Username = User})"
+<input type="button" value="View Dance Sales" onclick="location.href = '@Url.Action("ViewEventSales", "CMS", new { eventstring = "dance" },null)'"/>
 <input type="button" value="Create dance event" onclick="location.href='@Url.Action("Create", "CMS")'" />
 <input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS")'" />
 <input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
