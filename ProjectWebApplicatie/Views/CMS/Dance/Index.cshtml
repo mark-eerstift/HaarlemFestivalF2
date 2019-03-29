@@ -5,17 +5,17 @@
 
 
 @{
-    var test = new ProjectWebApplicatie.Models.Dance();
-    
+    string eventstring = "dance";
+
 }
 
 <h2>DanceOverzicht</h2>
 
-<input type="hidden" id="pageName" value="Dance" />
 
 
 
-<input type="button" value="View Dance Sales" onclick="location.href='@Url.Action("ViewEventSales", "CMS", new {Dance = test})'" />
+
+<input type="button" value="View Dance Sales" onclick="location.href = "@Url.Action("PasswordChange", "UserPassword", new { Username = User})"
 <input type="button" value="Create dance event" onclick="location.href='@Url.Action("Create", "CMS")'" />
 <input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS")'" />
 <input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
