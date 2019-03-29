@@ -40,32 +40,43 @@ namespace ProjectWebApplicatie.Controllers
         // GET: CMSTest/Create
         public ActionResult Create()
         {
+           
             return View("~/Views/CMS/Dance/Create.cshtml");
         }
 
-        // POST: CMSTest/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //Dance events kunnen aangemaaktt worden, code kopieeren voor andere 3 events.
+        //Datetime picker voor begin en eindtijd. 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,EvenementPrijs")] Evenement evenement, Dance dance, Jazz jazz, History history, Food food)
+        public ActionResult Create(Dance dance, Jazz jazz, History history, Food food)
         {
             if (ModelState.IsValid)
             {
-                dance.EvenementID = evenement.EvenementID;
-                jazz.EvenementID = evenement.EvenementID;
-                history.EvenementID = evenement.EvenementID;
-                food.EvenementID = evenement.EvenementID;
-
                 db.Evenements.Add(dance);
-                db.Evenements.Add(jazz);
-                db.Evenements.Add(history);
-                db.Evenements.Add(food);
-                db.SaveChanges();
-                
+                db.SaveChanges();               
             }
 
-            return View("~/Views/CMS/Dance/ViewDanceSales.cshtml", db.Evenements.ToList());
+            else if (ModelState.IsValid)
+            {
+                db.Evenements.Add(jazz);
+                db.SaveChanges();
+            }
+
+            else if (ModelState.IsValid)
+            {
+                db.Evenements.Add(history);
+                db.SaveChanges();
+            }
+
+            else if (ModelState.IsValid)
+            {
+                db.Evenements.Add(food);
+                db.SaveChanges();
+            }
+
+            //Uitvogelen wat hier een logischere return statement is. 
+            return View("~/Views/CMS/Dance/Index.cshtml");
         }
 
         // GET: CMSTest/Edit/5
@@ -134,36 +145,9 @@ namespace ProjectWebApplicatie.Controllers
             base.Dispose(disposing);
         }
 
-       /* Ik heb hier overwogen om hier twee methodes van te maken.
-        * Maar ik weet niet zo goed hoe ik het beste deze methode door kan geven welk type event hij op moet halen. 
-        * Mijn pogingen om dit voor elkaar te krijgen werden al snel erg lelijk. 
-        * */
-        //[Authorize]
-        //public ActionResult ViewDanceSales()
-        //{
-        //    List<Dance> dances = new List<Dance>();
-        //    dances = db.Dances.ToList();
-            
-        //    return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
-        //}
+     
 
-
-
-
-
-
-        //[Authorize]
-        //public ActionResult ViewDanceSalesByDate(DateTime date)
-        //{
-        //    List<Dance> dances = new List<Dance>();
-        //    dances = db.Dances.ToList();
-        //    dances.RemoveAll(Dance => Dance.BeginTijd.Date != date.Date);
-
-        //    return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
-        //}
-
-
-        //Maakt in de desbetreffende view een Null object aan van de benodigde event. Checkt of de event null is en zo ja, laadt de pagina.
+        //Krijgt vanuit de benodigde event een Eventtype mee, haalt alles van dat type op uit de database en toont de juiste view.
         [Authorize]
         public ActionResult ViewEventSales(string eventstring)
         {
@@ -192,6 +176,7 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Index.cshtml");
         }
 
+        //Krijgt vanuit de benodigde event een Eventtype en datum mee, haalt alles van dat type en die datum op, en toont de juiste view.
         [Authorize]
         public ActionResult ViewEventSalesByDate(string eventstring, DateTime date)
         {
@@ -233,22 +218,8 @@ namespace ProjectWebApplicatie.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        //Toont de indexes van de verschillende event types. 
         [Authorize]
         public ActionResult Jazz()
         {
