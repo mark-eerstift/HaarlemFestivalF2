@@ -40,5 +40,12 @@ namespace ProjectWebApplicatie.Controllers
 
             return View();
         }
+
+        public ActionResult Timetable()
+        {
+            ViewBag.Message = "Page with a timetable";
+
+            return View();
+        }
     }
 }

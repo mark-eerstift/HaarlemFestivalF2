@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Timetable";
+}
+<head>
+    <link rel="stylesheet" href="~/Timetable/timetablejs.css">
+</head>
+<h2>Timetable</h2>
+
+<body>
+    <h3>Friday 27 July</h3>
+    <div class="timetable"></div>
+    <script src="~/Timetable/timetable.js"></script>
+    <script>
+        var timetable = new Timetable();
+        timetable.setScope(9, 3);
+        timetable.addLocations(['Food', 'Dance', 'Jazz', 'Historic'])
+        timetable.addEvent('Ratatouille', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
+        timetable.addEvent('DJ Tiesto', 'Dance', new Date(2019, 7, 27, 21, 30, 00), new Date(2019, 7, 27, 23, 00, 00), { url: '#' })
+        timetable.addEvent('Sax Kings', 'Jazz', new Date(2019, 7, 28, 21, 30, 00), new Date(2019, 7, 28, 23, 00, 00), { url: '#' })
+        var renderer = new Timetable.Renderer(timetable)
+        renderer.draw('.timetable')
+    </script>
+
+    <h3>Saturday 28 July</h3>
+    <div class="timetable2"></div>
+    <script src="~/Timetable/timetable.js"></script>
+    <script>
+        var timetable2 = new Timetable();
+        timetable2.setScope(9, 3);
+        timetable2.addLocations(['Fofdod', 'Danfdce', 'Jfdazz', 'Histfdoric'])
+        timetable2.addEvent('Ratatouilfdle', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
+        var renderer = new Timetable.Renderer(timetable2)
+        renderer.draw('.timetable2')
+    </script>
+
+    <h3>Sunday 29 July</h3>
+    <div class="timetable3"></div>
+    <script src="~/Timetable/timetable.js"></script>
+    <script>
+        var timetable3 = new Timetable();
+        timetable3.setScope(9, 3);
+        timetable3.addLocations(['Food', 'Dance', 'Jazz', 'Historic'])
+        timetable3.addEvent('Ratatouille', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
+        timetable3.addEvent('DJ Tiesto', 'Dance', new Date(2019, 7, 27, 21, 30, 00), new Date(2019, 7, 27, 23, 00, 00), { url: '#' })
+        timetable3.addEvent('Sax Kings', 'Jazz', new Date(2019, 7, 28, 21, 30, 00), new Date(2019, 7, 28, 23, 00, 00), { url: '#' })
+        var renderer = new Timetable.Renderer(timetable3)
+        renderer.draw('.timetable3')
+    </script>
+</body>
