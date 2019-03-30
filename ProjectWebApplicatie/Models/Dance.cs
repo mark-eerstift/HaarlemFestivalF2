@@ -13,8 +13,8 @@ namespace ProjectWebApplicatie.Models
         public string Eventsoort;
         public virtual string Session { get; set; }
         public virtual Artiest Artiest { get; set; }
+        public virtual Event Events { get; set; }
 
-        
 
     }
 }

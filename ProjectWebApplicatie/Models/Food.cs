@@ -9,7 +9,7 @@ namespace ProjectWebApplicatie.Models
     public class Food : Evenement
     {
         public virtual Restaurant Restaurant { get; set; }
+        public virtual Event Events { get; set; }
 
-        
     }
 }

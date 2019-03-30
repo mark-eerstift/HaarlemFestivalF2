@@ -92,17 +92,16 @@ namespace ProjectWebApplicatie.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Dance d, Jazz j, Food f, History h, string Eventsoort)
+        public ActionResult Create(Evenement e, string Eventsoort)
         {
-            if (Eventsoort == "Dance" && ModelState.IsValid)
-            {
+            
 
 
              if (Eventsoort == "Dance" && ModelState.IsValid)
                 {
-                    if (!CheckIfDuplicateEvent(d))
+                    if (!CheckIfDuplicateEvent(e))
                     {
-                        db.Evenements.Add(d);
+                        db.Evenements.Add(e);
                         db.SaveChanges();
                     }
                     else
@@ -111,13 +110,13 @@ namespace ProjectWebApplicatie.Controllers
                     }
                 }
 
-            }
+            
 
             else if (Eventsoort == "Jazz" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(j))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(j);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -128,9 +127,9 @@ namespace ProjectWebApplicatie.Controllers
 
             else if (Eventsoort == "Food" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(j))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(j);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -141,9 +140,9 @@ namespace ProjectWebApplicatie.Controllers
 
             else if (Eventsoort == "History" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(j))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(j);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
