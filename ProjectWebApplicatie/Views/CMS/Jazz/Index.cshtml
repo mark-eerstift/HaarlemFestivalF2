@@ -16,6 +16,6 @@
 
 
 <input type="button" value="View Jazz Sales" onclick="location.href='@Url.Action("ViewEventSales", "CMS", new { eventstring = "jazz" },null)'"/>
-<input type="button" value="Create Jazz event" onclick="location.href='@Url.Action("Create", "CMS")'" />
-<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS")'" />
+<input type="button" value="Create Jazz event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "jazz" },null)'"/>
+<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "jazz" },null)'"/>
 <input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />

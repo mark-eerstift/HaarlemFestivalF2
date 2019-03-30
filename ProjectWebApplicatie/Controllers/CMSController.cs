@@ -37,23 +37,49 @@ namespace ProjectWebApplicatie.Controllers
             return View(evenement);
         }
 
-        // GET: CMSTest/Create
-        public ActionResult Create()
+        //Word aangeroepen wanneer er op Create x event word gedrukt en roept de juiste view aan.
+         
+
+        public ActionResult Create(string eventstring)
         {
-           
-            return View("~/Views/CMS/Dance/Create.cshtml");
+
+            if (eventstring == "dance")
+            {
+                
+                return View(("~/Views/CMS/Dance/Create.cshtml"));
+            }
+            else if (eventstring == "jazz")
+            {
+               
+                return View(("~/Views/CMS/Jazz/Create.cshtml"));
+            }
+            else if (eventstring == "history")
+            {
+                
+                return View(("~/Views/CMS/Historic/Create.cshtml"));
+            }
+            else if (eventstring == "food")
+            {
+                
+                return View(("~/Views/CMS/Food/Create.cshtml"));
+            }
+
+
+            return View("~/Views/CMS/Index.cshtml");
         }
 
-        //Dance events kunnen aangemaaktt worden, code kopieeren voor andere 3 events.
+        //TO DO:
         //Datetime picker voor begin en eindtijd. 
-
         //De TicketsAvailable variable moet automatisch op Ticketstotaal – Ticketsverkocht gezet worden. 
-        //Date time picker voor begin en einddatum.
+        //Check of datetime binnen festival falt
+        //Check of eindtijd niet eerder is dan begintijd.
 
         //Ontvangt 1 van de 4 event types, checkt of het model klopt en voegt deze dan toe aan de database.
+        //Nog te doen: Checken of een event aan bestaat op basis van Locatie en Begin/eindtijd. 
+        //Zo ja: There is an event called X at location Y at time Z.
         //Een nettere manier zou zijn een List<Evenementen> mee te geven vanuit de view. 
 
-            //Iets om te overwegen: Dance Jazz etc aan evenement te linken door middel van FK EvenementID
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -61,31 +87,84 @@ namespace ProjectWebApplicatie.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Evenements.Add(dance);
-                db.SaveChanges();               
+                if (!CheckIfDuplicateEvent(dance)) 
+                {
+                    db.Evenements.Add(dance);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //Melding dat event al bestaat, wil je vervangen.
+                }
             }
 
             else if (ModelState.IsValid)
             {
-                db.Evenements.Add(jazz);
-                db.SaveChanges();
+                if (!CheckIfDuplicateEvent(jazz))
+                {
+                    db.Evenements.Add(jazz);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //Melding dat event al bestaat, wil je vervangen.
+                }
             }
 
             else if (ModelState.IsValid)
             {
-                db.Evenements.Add(history);
-                db.SaveChanges();
+                if (!CheckIfDuplicateEvent(history))
+                {
+                    db.Evenements.Add(history);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //Melding dat event al bestaat, wil je vervangen.
+                }
             }
 
             else if (ModelState.IsValid)
             {
-                db.Evenements.Add(food);
-                db.SaveChanges();
+                if (!CheckIfDuplicateEvent(history))
+                {
+                    db.Evenements.Add(history);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    //Melding dat event al bestaat, wil je vervangen.
+                }
             }
 
             //Uitvogelen wat hier een logischere return statement is. 
             //Vragen: Meer events toevoegen of naar rooster toe?
             return View("~/Views/CMS/Dance/Index.cshtml");
+        }
+
+
+        //Controleert of er al een event is op dat precieze tijdstip en locatie.
+        //te doen: Eindtijd - begintijd, checken of het evenement dat je wilt toevoegen BEGINT tijdens een ander event. 
+        public bool CheckIfDuplicateEvent(Evenement e)
+        {
+            List<Evenement> evenements = db.Evenements.ToList();
+            foreach(Evenement x in evenements)
+            {
+                //Checkt voor een toegevoegd event of er al een event is op die tijd en locatie. 
+                if(e.BeginTijd == x.BeginTijd && e.EindTijd == x.EindTijd && e.Locatie == x.Locatie)
+                {
+                    return true;
+                }
+
+                //Checkt of de begintijd van een event op locatie X TIJDENS een ander event is op die locatie. Ofwel, checkt voor overlap.
+                else if (e.Locatie == x.Locatie && e.BeginTijd.TimeOfDay > x.BeginTijd.TimeOfDay && e.BeginTijd.TimeOfDay < x.EindTijd.TimeOfDay)
+                {
+                    return true;
+                }
+
+            }
+
+            return false;
         }
 
         // GET: CMSTest/Edit/5
