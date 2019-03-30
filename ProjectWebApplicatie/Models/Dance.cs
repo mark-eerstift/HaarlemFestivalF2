@@ -7,12 +7,16 @@ namespace ProjectWebApplicatie.Models
 {
     public class Dance : Evenement
     {
+        public string eventsoort;
         public virtual string Session { get; set; }
         public virtual Artiest Artiest { get; set; }
-        public virtual Event Event
+        Event eventding = new Event
         {
-            get { return Event; }
-            set { Event.EventSoort = "Dance"; }
-        }
+            EventSoort = "Dance",
+            
+        };
+
+
+
     }
 }

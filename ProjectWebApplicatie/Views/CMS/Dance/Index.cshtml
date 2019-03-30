@@ -1,17 +1,31 @@
-﻿@{
+﻿@model ProjectWebApplicatie.Models.Dance
+
+@{
     ViewBag.Title = "Manage Dance Events";
 
 }
-
-@model ProjectWebApplicatie.Models.Dance
 
 
 
 <h2>DanceOverzicht</h2>
 
-@Model.Event.EventSoort = "Dance";
+<form action="/CMS/ViewEventSales" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Dance" />
+    <button type="submit">view all events</button>
+</form>
 
-<input type="button" value="View Dance Events" onclick="location.href='@Url.Action("ViewEventSales", "CMS", Model)'" />
-<input type="button" value="Create dance event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "dance" },null)'" />
-<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "dance" },null)'" />
-<input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
+<form action="/CMS/Create" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Dance" />
+    <button type="submit">Create event</button>
+</form>
+
+<form action="/CMS/Edit" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Dance" />
+    <button type="submit">Edit event</button>
+</form>
+
+<form action="/CMS/Delete" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Dance" />
+    <button type="submit">Delete Event</button>
+</form>
+

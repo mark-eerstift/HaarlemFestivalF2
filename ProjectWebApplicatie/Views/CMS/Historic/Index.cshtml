@@ -10,11 +10,22 @@
 
 <h2>Manage History Events</h2>
 
+<form action="/CMS/ViewEventSales" Method="GET">
+    <input type="hidden" name="Eventsoort" value="History" />
+    <button type="submit">view all events</button>
+</form>
 
+<form action="/CMS/Create" Method="GET">
+    <input type="hidden" name="Eventsoort" value="History" />
+    <button type="submit">Create event</button>
+</form>
 
+<form action="/CMS/Edit" Method="GET">
+    <input type="hidden" name="Eventsoort" value="History" />
+    <button type="submit">Edit event</button>
+</form>
 
-
-<input type="button" value="View Historic Sales" onclick="location.href='@Url.Action("ViewEventSales", "CMS", new { eventstring = "history" },null)'"/>
-<input type="button" value="Create Historic event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "history" },null)'"/>
-<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "history" },null)'"/>
-<input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
+<form action="/CMS/Delete" Method="GET">
+    <input type="hidden" name="Eventsoort" value="History" />
+    <button type="submit">Delete Event</button>
+</form>

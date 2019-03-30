@@ -9,11 +9,11 @@ namespace ProjectWebApplicatie.Models
     {
         public virtual string Stage { get; set; }
         public virtual Artiest Artiest { get; set; }
-        public override Event Event
+        Event eventding = new Event
         {
-            get { return Event; }
-            set { Event.EventSoort = "Jazz"; }
-        }
+            EventSoort = "Jazz",
+
+        };
 
     }
 }

@@ -14,15 +14,13 @@ namespace ProjectWebApplicatie.Controllers
     {
 
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
-        // GET: CMS
         [Authorize]
         
 
 
 
         //Wat ik wil doen: 
-        //Een evenement Object meesturen naar de index. Op de index zijn 4 buttons.
-        //Als er op 1 van die 4 buttons word geklikt, word het Evenement.Event.EventSoort gevuld met de juiste event. 
+        //Op het moment dat er op een link in de index word geklikt, word er een 
         
         public ActionResult Index()
         {
@@ -49,28 +47,28 @@ namespace ProjectWebApplicatie.Controllers
         //Word aangeroepen wanneer er op Create x event word gedrukt en roept de juiste view aan.
          
 
-        public ActionResult Create(Evenement e)
+        public ActionResult Create(string Eventsoort)
         {
 
-            if (e.Event.EventSoort == "Dance")
+            if (Eventsoort == "Dance")
             {
-                
-                return View(("~/Views/CMS/Dance/Create.cshtml" ), e);
+                Dance d = new Dance();
+                return View(("~/Views/CMS/Dance/Create.cshtml" ), d);
             }
-            else if (e.Event.EventSoort == "Jazz")
+            else if (Eventsoort == "Jazz")
             {
-               
-                return View(("~/Views/CMS/Jazz/Create.cshtml"),e);
+                Jazz j = new Jazz();
+                return View(("~/Views/CMS/Jazz/Create.cshtml"),j);
             }
-            else if (e.Event.EventSoort == "History")
+            else if (Eventsoort == "History")
             {
-                
-                return View(("~/Views/CMS/Historic/Create.cshtml"), e);
+                History h = new History();
+                return View(("~/Views/CMS/Historic/Create.cshtml"), h);
             }
-            else if (e.Event.EventSoort == "Food")
+            else if (Eventsoort == "Food")
             {
-                
-                return View(("~/Views/CMS/Food/Create.cshtml"), e);
+                Food f = new Food();
+                return View(("~/Views/CMS/Food/Create.cshtml"), f);
             }
 
 
@@ -92,9 +90,9 @@ namespace ProjectWebApplicatie.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateEvent(Evenement e)
+        public ActionResult CreateEvent(Evenement e, string Eventsoort)
         {
-            if (e.Event.EventSoort == "Dance" && ModelState.IsValid)
+            if (Eventsoort == "Dance" && ModelState.IsValid)
             {
                 if (!CheckIfDuplicateEvent(e)) 
                 {
@@ -107,7 +105,7 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (e.Event.EventSoort == "Jazz" && ModelState.IsValid)
+            else if (Eventsoort == "Jazz" && ModelState.IsValid)
             {
                 if (!CheckIfDuplicateEvent(e))
                 {
@@ -120,7 +118,7 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (e.Event.EventSoort == "Food" && ModelState.IsValid)
+            else if (Eventsoort == "Food" && ModelState.IsValid)
             {
                 if (!CheckIfDuplicateEvent(e))
                 {
@@ -133,7 +131,7 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (e.Event.EventSoort == "History" && ModelState.IsValid)
+            else if (Eventsoort == "History" && ModelState.IsValid)
             {
                 if (!CheckIfDuplicateEvent(e))
                 {
@@ -246,24 +244,27 @@ namespace ProjectWebApplicatie.Controllers
         //Haalt ALLE events op van een gegeven event-type
         //Krijgt vanuit de benodigde event een Eventtype mee, haalt alles van dat type op uit de database en toont de juiste view.
         [Authorize]
-        public ActionResult ViewEventSales(string eventstring)
+        public ActionResult ViewEventSales(Evenement e, string Eventsoort)
         {
-            if (eventstring == "dance")
+            
+
+            if (Eventsoort == "Dance")
             {
+
                 List<Dance> dances = db.Dances.ToList();
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (eventstring == "jazz")
+            else if (Eventsoort == "Jazz")
             {
                 List<Jazz> jazzs = db.Jazzs.ToList();
                 return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (eventstring == "history")
+            else if (Eventsoort == "History")
             {
                 List<History> histories = db.Historys.ToList();
                 return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
-            else if (eventstring == "food")
+            else if (Eventsoort == "Food")
             {
                 List<Food> foods = db.Foods.ToList();
                 return View(("~/Views/CMS/Food/ViewFoodSales.cshtml"), foods);
@@ -276,9 +277,9 @@ namespace ProjectWebApplicatie.Controllers
         
         //Krijgt vanuit de benodigde event een Eventtype en datum mee, haalt alles van dat type en die datum op, en toont de juiste view.
         [Authorize]
-        public ActionResult ViewEventSalesByDate(string eventstring, DateTime date)
+        public ActionResult ViewEventSalesByDate(Evenement e, DateTime date, string Eventsoort)
         {
-            if (eventstring == "dance")
+            if (Eventsoort == "Dance")
             {
                 List<Dance> dances = new List<Dance>();
                 dances = db.Dances.ToList();
@@ -286,7 +287,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (eventstring == "jazz")
+            else if (Eventsoort == "Jazz")
             {
                 List<Jazz> jazzs = new List<Jazz>();
                 jazzs = db.Jazzs.ToList();
@@ -294,7 +295,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (eventstring == "history")
+            else if (Eventsoort == "History")
             {
                 List<History> histories = new List<History>();
                 histories = db.Historys.ToList();
@@ -302,13 +303,13 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
-            else if (eventstring == "food")
+            else if (Eventsoort == "Food")
             {
                 List<Food> foods = new List<Food>();
                 foods = db.Foods.ToList();
                 foods.RemoveAll(Food => Food.BeginTijd.Date != date.Date);
 
-                return View(("~/Views/CMS/Food/ViewDanceSales.cshtml"), foods);
+                return View(("~/Views/CMS/Food/ViewFoodSales.cshtml"), foods);
             }
 
 
@@ -321,26 +322,31 @@ namespace ProjectWebApplicatie.Controllers
         [Authorize]
         public ActionResult Jazz()
         {
-            Jazz jazz = new Jazz();
-           
+            
             return View("~/Views/CMS/Jazz/Index.cshtml");
         }
 
         [Authorize]
         public ActionResult Food()
         {
+            
             return View("~/Views/CMS/Food/Index.cshtml");
         }
 
         [Authorize]
         public ActionResult Dance()
         {
+            
+         
+            
+           
             return View("~/Views/CMS/Dance/Index.cshtml");
         }
 
         [Authorize]
-        public ActionResult Historic()
+        public ActionResult Historic() 
         {
+            
             return View("~/Views/CMS/Historic/Index.cshtml");
         }
 

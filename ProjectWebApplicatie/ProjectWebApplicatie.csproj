@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201903301422022_EventsHebbenEventTypes.Designer.cs">
       <DependentUpon>201903301422022_EventsHebbenEventTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903301714048_Wijziging.cs" />
+    <Compile Include="Migrations\201903301714048_Wijziging.Designer.cs">
+      <DependentUpon>201903301714048_Wijziging.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -476,6 +480,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903301422022_EventsHebbenEventTypes.resx">
       <DependentUpon>201903301422022_EventsHebbenEventTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903301714048_Wijziging.resx">
+      <DependentUpon>201903301714048_Wijziging.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

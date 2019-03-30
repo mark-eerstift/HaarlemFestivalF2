@@ -8,10 +8,11 @@ namespace ProjectWebApplicatie.Models
     public class Food : Evenement
     {
         public virtual Restaurant Restaurant { get; set; }
-        public virtual Event Event
+
+        Event eventding = new Event
         {
-            get { return Event; }
-            set { Event.EventSoort = "Food"; }
-        }
+            EventSoort = "Food",
+
+        };
     }
 }

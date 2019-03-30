@@ -12,10 +12,22 @@
 <h2>Manage Jazz Events</h2>
 
 
+<form action="/CMS/ViewEventSales" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">view all events</button>
+</form>
 
+<form action="/CMS/Create" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">Create event</button>
+</form>
 
+<form action="/CMS/Edit" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">Edit event</button>
+</form>
 
-<input type="button" value="View Jazz Sales" onclick="location.href='@Url.Action("ViewEventSales", "CMS", new { eventstring = "jazz" },null)'"/>
-<input type="button" value="Create Jazz event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "jazz" },null)'"/>
-<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "jazz" },null)'"/>
-<input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />
+<form action="/CMS/Delete" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">Delete Event</button>
+</form>
