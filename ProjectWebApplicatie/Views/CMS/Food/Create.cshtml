@@ -81,7 +81,7 @@
             @Html.ValidationMessageFor(model => model.EvenementPrijs, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    @Html.Hidden(Model.Event.EventSoort, "Food")
 
 
 

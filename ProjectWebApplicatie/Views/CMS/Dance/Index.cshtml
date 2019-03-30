@@ -3,19 +3,15 @@
 
 }
 
+@model ProjectWebApplicatie.Models.Dance
 
-@{
-    string eventstring = "dance";
 
-}
 
 <h2>DanceOverzicht</h2>
 
+@Model.Event.EventSoort = "Dance";
 
-
-
-
-<input type="button" value="View Dance Sales" onclick="location.href = '@Url.Action("ViewEventSales", "CMS", new { eventstring = "dance" },null)'"/>
-<input type="button" value="Create dance event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "dance" },null)'"/>
-<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "dance" },null)'"/>
+<input type="button" value="View Dance Events" onclick="location.href='@Url.Action("ViewEventSales", "CMS", Model)'" />
+<input type="button" value="Create dance event" onclick="location.href='@Url.Action("Create", "CMS", new { eventstring = "dance" },null)'" />
+<input type="button" value="Edit event schedule" onclick="location.href='@Url.Action("Edit", "CMS", new { eventstring = "dance" },null)'" />
 <input type="button" value="Edit Page Content" onclick="location.href='@Url.Action("Delete", "CMS")'" />

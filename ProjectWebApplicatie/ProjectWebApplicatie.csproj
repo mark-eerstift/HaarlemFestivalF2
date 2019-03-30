@@ -242,6 +242,18 @@
     <Compile Include="Migrations\201903282020262_EmailInVrijwilliger.Designer.cs">
       <DependentUpon>201903282020262_EmailInVrijwilliger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903301240110_evenementHasEventType.cs" />
+    <Compile Include="Migrations\201903301240110_evenementHasEventType.Designer.cs">
+      <DependentUpon>201903301240110_evenementHasEventType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903301324506_EventSoort.cs" />
+    <Compile Include="Migrations\201903301324506_EventSoort.Designer.cs">
+      <DependentUpon>201903301324506_EventSoort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903301422022_EventsHebbenEventTypes.cs" />
+    <Compile Include="Migrations\201903301422022_EventsHebbenEventTypes.Designer.cs">
+      <DependentUpon>201903301422022_EventsHebbenEventTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AllPassTicket.cs" />
     <Compile Include="Models\Artiest.cs" />
@@ -455,6 +467,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903282020262_EmailInVrijwilliger.resx">
       <DependentUpon>201903282020262_EmailInVrijwilliger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903301240110_evenementHasEventType.resx">
+      <DependentUpon>201903301240110_evenementHasEventType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903301324506_EventSoort.resx">
+      <DependentUpon>201903301324506_EventSoort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903301422022_EventsHebbenEventTypes.resx">
+      <DependentUpon>201903301422022_EventsHebbenEventTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

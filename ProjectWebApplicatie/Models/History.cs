@@ -9,5 +9,10 @@ namespace ProjectWebApplicatie.Models
     {
         public virtual string EindLocatie { get; set; }
         public virtual string Taal { get; set; }
+        public virtual Event Event
+        {
+            get { return Event; }
+            set { Event.EventSoort = "History"; }
+        }
     }
 }

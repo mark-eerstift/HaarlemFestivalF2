@@ -16,10 +16,19 @@ namespace ProjectWebApplicatie.Controllers
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
         // GET: CMS
         [Authorize]
-        // GET: CMSTest
+        
+
+
+
+        //Wat ik wil doen: 
+        //Een evenement Object meesturen naar de index. Op de index zijn 4 buttons.
+        //Als er op 1 van die 4 buttons word geklikt, word het Evenement.Event.EventSoort gevuld met de juiste event. 
+        
         public ActionResult Index()
         {
-            return View("~/Views/CMS/Index.cshtml", db.Evenements.ToList());
+            Evenement e = new Evenement();
+            
+            return View("~/Views/CMS/Index.cshtml", e);
         }
 
         // GET: CMSTest/Details/5
@@ -40,28 +49,28 @@ namespace ProjectWebApplicatie.Controllers
         //Word aangeroepen wanneer er op Create x event word gedrukt en roept de juiste view aan.
          
 
-        public ActionResult Create(string eventstring)
+        public ActionResult Create(Evenement e)
         {
 
-            if (eventstring == "dance")
+            if (e.Event.EventSoort == "Dance")
             {
                 
-                return View(("~/Views/CMS/Dance/Create.cshtml"));
+                return View(("~/Views/CMS/Dance/Create.cshtml" ), e);
             }
-            else if (eventstring == "jazz")
+            else if (e.Event.EventSoort == "Jazz")
             {
                
-                return View(("~/Views/CMS/Jazz/Create.cshtml"));
+                return View(("~/Views/CMS/Jazz/Create.cshtml"),e);
             }
-            else if (eventstring == "history")
+            else if (e.Event.EventSoort == "History")
             {
                 
-                return View(("~/Views/CMS/Historic/Create.cshtml"));
+                return View(("~/Views/CMS/Historic/Create.cshtml"), e);
             }
-            else if (eventstring == "food")
+            else if (e.Event.EventSoort == "Food")
             {
                 
-                return View(("~/Views/CMS/Food/Create.cshtml"));
+                return View(("~/Views/CMS/Food/Create.cshtml"), e);
             }
 
 
@@ -83,13 +92,13 @@ namespace ProjectWebApplicatie.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Dance dance, Jazz jazz, History history, Food food)
+        public ActionResult CreateEvent(Evenement e)
         {
-            if (ModelState.IsValid)
+            if (e.Event.EventSoort == "Dance" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(dance)) 
+                if (!CheckIfDuplicateEvent(e)) 
                 {
-                    db.Evenements.Add(dance);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -98,11 +107,11 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (ModelState.IsValid)
+            else if (e.Event.EventSoort == "Jazz" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(jazz))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(jazz);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -111,11 +120,11 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (ModelState.IsValid)
+            else if (e.Event.EventSoort == "Food" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(history))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(history);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -124,11 +133,11 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (ModelState.IsValid)
+            else if (e.Event.EventSoort == "History" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(history))
+                if (!CheckIfDuplicateEvent(e))
                 {
-                    db.Evenements.Add(history);
+                    db.Evenements.Add(e);
                     db.SaveChanges();
                 }
                 else
@@ -137,8 +146,8 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            //Uitvogelen wat hier een logischere return statement is. 
-            //Vragen: Meer events toevoegen of naar rooster toe?
+            //Uitvogelen wat hier een logischere return statement is.
+            //Vragen: Meer events toevoegen of naar rooster toe ?
             return View("~/Views/CMS/Dance/Index.cshtml");
         }
 
@@ -312,6 +321,8 @@ namespace ProjectWebApplicatie.Controllers
         [Authorize]
         public ActionResult Jazz()
         {
+            Jazz jazz = new Jazz();
+           
             return View("~/Views/CMS/Jazz/Index.cshtml");
         }
 
