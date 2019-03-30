@@ -52,8 +52,9 @@ namespace ProjectWebApplicatie.Controllers
 
             if (Eventsoort == "Dance")
             {
-                
-                Evenement d = new Dance();
+               
+                Dance d = new Dance();
+                Evenement e = new Dance();
                 return View(("~/Views/CMS/Dance/Create.cshtml" ), d);
             }
             else if (Eventsoort == "Jazz")

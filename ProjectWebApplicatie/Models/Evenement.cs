@@ -20,10 +20,7 @@ namespace ProjectWebApplicatie.Models
         public virtual int TicketsVerkocht { get; set; }
         public virtual double EvenementPrijs { get; set; }
         public virtual Event Events { get; set; }
-        public virtual Dance Dance { get; set; }
-        public virtual Jazz Jazz { get; set; }
-        public virtual History History { get; set; }
-        public virtual Food Food { get; set; }
+       
 
 
     }
