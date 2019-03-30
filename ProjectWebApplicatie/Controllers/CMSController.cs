@@ -53,8 +53,8 @@ namespace ProjectWebApplicatie.Controllers
             if (Eventsoort == "Dance")
             {
                
-                Dance d = new Dance();
-                Evenement e = new Dance();
+                Evenement d = new Dance();
+                
                 return View(("~/Views/CMS/Dance/Create.cshtml" ), d);
             }
             else if (Eventsoort == "Jazz")
@@ -92,29 +92,32 @@ namespace ProjectWebApplicatie.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Evenement e, string Eventsoort)
+        public ActionResult Create(Dance d, Jazz j, Food f, History h, string Eventsoort)
         {
             if (Eventsoort == "Dance" && ModelState.IsValid)
             {
 
 
+             if (Eventsoort == "Dance" && ModelState.IsValid)
+                {
+                    if (!CheckIfDuplicateEvent(d))
+                    {
+                        db.Evenements.Add(d);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        //Melding dat event al bestaat, wil je vervangen.
+                    }
+                }
 
-                if (!CheckIfDuplicateEvent(e))
-                {
-                    db.Evenements.Add(e);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    return Content("<script language='javascript' type='text/javascript'>alert     ('Event already exists with this starttime, and at this location. ');</script>");
-                }
             }
 
             else if (Eventsoort == "Jazz" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(j))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(j);
                     db.SaveChanges();
                 }
                 else
@@ -125,9 +128,9 @@ namespace ProjectWebApplicatie.Controllers
 
             else if (Eventsoort == "Food" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(j))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(j);
                     db.SaveChanges();
                 }
                 else
@@ -138,9 +141,9 @@ namespace ProjectWebApplicatie.Controllers
 
             else if (Eventsoort == "History" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(j))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(j);
                     db.SaveChanges();
                 }
                 else
@@ -151,14 +154,14 @@ namespace ProjectWebApplicatie.Controllers
 
             //Uitvogelen wat hier een logischere return statement is.
             //Vragen: Meer events toevoegen of naar rooster toe ?
-        
+
             return View("~/Views/CMS/Dance/Index.cshtml");
         }
 
 
         //Controleert of er al een event is op dat precieze tijdstip en locatie.
         //te doen: Eindtijd - begintijd, checken of het evenement dat je wilt toevoegen BEGINT tijdens een ander event. 
-
+        [HttpPost]
         public bool CheckIfDuplicateEvent(Evenement e)
         {
             List<Evenement> evenements = db.Evenements.ToList();
@@ -168,15 +171,16 @@ namespace ProjectWebApplicatie.Controllers
                 if(e.BeginTijd == x.BeginTijd && e.EindTijd == x.EindTijd && e.Locatie == x.Locatie)
                 {
                     
+                    DuplicateFound(x);
                     return true;
                 }
 
                 //Checkt of de begintijd van een event op locatie X TIJDENS een ander event is op die locatie. Ofwel, checkt voor overlap.
                 else if (e.Locatie == x.Locatie && e.BeginTijd.TimeOfDay > x.BeginTijd.TimeOfDay && e.BeginTijd.TimeOfDay < x.EindTijd.TimeOfDay)
                 {
-                    ViewBag.Message = string.Format("An event at this location overlaps with the event you are trying to add.  {1}" + x.BeginTijd + x.EindTijd + x.Locatie);
-                    return true;
 
+                    OverlapFound(x);
+                    return true;
                 }
 
             }
@@ -360,6 +364,18 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Historic/Index.cshtml");
         }
 
+
+        public ActionResult DuplicateFound(Evenement x)
+        {
+            string alert = "Error: An event already takes place at this location at the specified time. \n ";
+              
+            return Content("<script language='javascript' type='text/javascript'>alert(message);</script>");
+        }
+
+        public ActionResult OverlapFound(Evenement x)
+        {
+            return Content("<script language='javascript' type='text/javascript'>alert(message);</script>");
+        }
 
     }
 }

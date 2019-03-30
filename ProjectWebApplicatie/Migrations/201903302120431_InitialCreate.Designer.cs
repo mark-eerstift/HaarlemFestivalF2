@@ -7,13 +7,13 @@ namespace ProjectWebApplicatie.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Inheritance : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Inheritance));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812111038216_Inheritance"; }
+            get { return "201903302120431_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,7 +10,6 @@ namespace ProjectWebApplicatie.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ProjectWebApplicatie.Models.ProjectWebApplicatieContextDB";
         }
 
         protected override void Seed(ProjectWebApplicatie.Models.ProjectWebApplicatieContextDB context)
