@@ -6,13 +6,13 @@ using ProjectWebApplicatie.Models;
 
 namespace ProjectWebApplicatie.Logic
 {
-    public class ShoppingCartActions
+    public class ShoppingCartActions : IDisposable
     {
         public string ShoppingCartId { get; set; }
 
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
 
-        public const string CartSessionId = "CardId";
+        public const string CartSessionKey = "CardId";
 
         public void AddToCart(int id)
         {
