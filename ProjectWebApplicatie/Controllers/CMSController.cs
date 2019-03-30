@@ -47,6 +47,14 @@ namespace ProjectWebApplicatie.Controllers
         //Dance events kunnen aangemaaktt worden, code kopieeren voor andere 3 events.
         //Datetime picker voor begin en eindtijd. 
 
+        //De TicketsAvailable variable moet automatisch op Ticketstotaal – Ticketsverkocht gezet worden. 
+        //Date time picker voor begin en einddatum.
+
+        //Ontvangt 1 van de 4 event types, checkt of het model klopt en voegt deze dan toe aan de database.
+        //Een nettere manier zou zijn een List<Evenementen> mee te geven vanuit de view. 
+
+            //Iets om te overwegen: Dance Jazz etc aan evenement te linken door middel van FK EvenementID
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Dance dance, Jazz jazz, History history, Food food)
@@ -76,6 +84,7 @@ namespace ProjectWebApplicatie.Controllers
             }
 
             //Uitvogelen wat hier een logischere return statement is. 
+            //Vragen: Meer events toevoegen of naar rooster toe?
             return View("~/Views/CMS/Dance/Index.cshtml");
         }
 
@@ -146,7 +155,7 @@ namespace ProjectWebApplicatie.Controllers
         }
 
      
-
+        //Haalt ALLE events op van een gegeven event-type
         //Krijgt vanuit de benodigde event een Eventtype mee, haalt alles van dat type op uit de database en toont de juiste view.
         [Authorize]
         public ActionResult ViewEventSales(string eventstring)
@@ -176,6 +185,7 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Index.cshtml");
         }
 
+        
         //Krijgt vanuit de benodigde event een Eventtype en datum mee, haalt alles van dat type en die datum op, en toont de juiste view.
         [Authorize]
         public ActionResult ViewEventSalesByDate(string eventstring, DateTime date)
