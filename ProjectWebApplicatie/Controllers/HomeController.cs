@@ -47,5 +47,19 @@ namespace ProjectWebApplicatie.Controllers
 
             return View();
         }
+
+        public ActionResult Food()
+        {
+            ViewBag.Message = "The main food page";
+
+            return View();
+        }
+
+        public ActionResult FoodPurchase()
+        {
+            ViewBag.Message = "The food purchase page";
+
+            return View();
+        }
     }
 }

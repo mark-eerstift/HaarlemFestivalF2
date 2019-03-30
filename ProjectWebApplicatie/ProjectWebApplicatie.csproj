@@ -277,6 +277,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DanceStyle.css" />
+    <Content Include="Content\FoodStyle.css" />
     <Content Include="Content\HistoricStyle.css" />
     <Content Include="Content\images\afrojack cropped.png" />
     <Content Include="Content\images\afrojack.jpg" />
@@ -284,6 +285,11 @@
     <Content Include="Content\images\armin van buuren.jpg" />
     <Content Include="Content\images\DJTiesto cropped.png" />
     <Content Include="Content\images\DJTiesto.jpg" />
+    <Content Include="Content\images\food\header.png" />
+    <Content Include="Content\images\food\header_smaller.png" />
+    <Content Include="Content\images\food\image1.png" />
+    <Content Include="Content\images\food\image1_stretch.png" />
+    <Content Include="Content\images\food\image2.png" />
     <Content Include="Content\images\Hardwell cropped.png" />
     <Content Include="Content\images\Hardwell.jpg" />
     <Content Include="Content\images\historic\HeaderImg.png" />
@@ -392,6 +398,7 @@
     <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
     <Content Include="Views\Home\Timetable.cshtml" />
     <Content Include="Views\Home\Food.cshtml" />
+    <Content Include="Views\Home\FoodPurchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
