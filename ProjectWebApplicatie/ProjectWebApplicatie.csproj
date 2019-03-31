@@ -298,9 +298,9 @@
     <Content Include="Views\Shared\_MyCMSLayout.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\ForgotPassword.cshtml" />
-    <Content Include="Views\CMS\Dance\Delete.cshtml" />
+    <Content Include="Views\CMS\Delete.cshtml" />
     <Content Include="Views\CMS\Dance\Index.cshtml" />
-    <Content Include="Views\CMS\Dance\Edit.cshtml" />
+    <Content Include="Views\CMS\Edit.cshtml" />
     <Content Include="Views\CMS\Dance\Create.cshtml" />
     <Content Include="Views\CMS\Food\Create.cshtml" />
     <Content Include="Views\CMS\Food\Delete.cshtml" />
@@ -320,6 +320,7 @@
     <Content Include="Views\CMS\Food\ViewFoodSales.cshtml" />
     <Content Include="Views\CMS\Historic\ViewHistorySales.cshtml" />
     <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
+    <Content Include="Views\CMS\ModalPopUp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

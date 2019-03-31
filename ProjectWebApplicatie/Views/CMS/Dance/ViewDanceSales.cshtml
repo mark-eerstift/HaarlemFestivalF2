@@ -4,6 +4,25 @@
     ViewBag.Title = "ViewDanceSales";
 }
 
+@{ 
+    var artiest = TempData["artiest"];
+    var begintijd = TempData["begintijd"];
+    var eindtijd = TempData["eindtijd"];
+    var locatie = TempData["locatie"];
+    var error = TempData["error"];
+    
+}
+
+@if (TempData != null)
+{
+    <script type="text/javascript">
+          alert( "@(error + "\n Begindtijd: " + begintijd + ", \n Eindtijd: " + eindtijd + ", \n Locatie: " + locatie + ", \n Artiest: " + artiest)");
+    </script>
+}
+
+
+
+
 @{
     DateTime thursday = new DateTime(2019, 07, 27);
     DateTime friday = new DateTime(2019, 07, 28);

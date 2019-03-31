@@ -90,31 +90,45 @@ namespace ProjectWebApplicatie.Controllers
         //Zo ja: There is an event called X at location Y at time Z.
         //Een nettere manier zou zijn een List<Evenementen> mee te geven vanuit de view. 
 
-
+        public ActionResult ModalPopUp()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Dance d, Food f, History h, Jazz j)
         {
 
-          
-            
-            
-             //if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
-             //   {
-             //       if (!CheckIfDuplicateEvent(d))
-             //       {
-                    
-             //           db.Evenements.Add(d);
-             //           db.SaveChanges();
-             //       }
-             //       else
-             //       {
-             //           //Melding dat event al bestaat, wil je vervangen.
-             //       }
-             //   }
 
-            
+
+
+            if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
+            {
+                
+                Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
+                if (CheckIfDuplicateEvent(d) == null)
+                {
+
+                    db.Evenements.Add(d);
+                    db.SaveChanges();
+                    return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = d.Events.EventSoort });
+                }
+                else
+                {
+                    TempData["artiest"] = duplicate.Artiest;
+                    TempData["begintijd"] = duplicate.BeginTijd;
+                    TempData["eindtijd"] = duplicate.EindTijd;
+                    TempData["locatie"] = duplicate.Locatie;
+                    TempData["dupeEventID"] = duplicate.EvenementID;
+                    TempData["dupeEvent"] = duplicate;
+                    TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+                    return PartialView("ModalPopUp");
+
+                }
+            }
+
+
 
             //else if (j.Events.EventSoort == "Jazz" && ModelState.IsValid)
             //{
@@ -122,25 +136,32 @@ namespace ProjectWebApplicatie.Controllers
             //    {
             //        db.Evenements.Add(j);
             //        db.SaveChanges();
+                    
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = j.Events.EventSoort });
             //    }
             //    else
             //    {
-            //        //Melding dat event al bestaat, wil je vervangen.
+            //        TempData["j"] = j;
+            //        TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = j.Events.EventSoort });
             //    }
             //}
 
-            if (f.Events.EventSoort == "Food" && ModelState.IsValid)
-            {
-                if (!CheckIfDuplicateEvent(f))
-                {
-                    db.Evenements.Add(f);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //Melding dat event al bestaat, wil je vervangen.
-                }
-            }
+            //if (f.Events.EventSoort == "Food" && ModelState.IsValid)
+            //{
+            //    if (!CheckIfDuplicateEvent(f))
+            //    {
+            //        db.Evenements.Add(f);
+            //        db.SaveChanges();
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = f.Events.EventSoort });
+            //    }
+            //    else
+            //    {
+            //        TempData["f"] = f;
+            //        TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = f.Events.EventSoort });
+            //    }
+            //}
 
             //else if (h.Events.EventSoort == "History" && ModelState.IsValid)
             //{
@@ -148,24 +169,27 @@ namespace ProjectWebApplicatie.Controllers
             //    {
             //        db.Evenements.Add(h);
             //        db.SaveChanges();
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = h.Events.EventSoort });
             //    }
             //    else
             //    {
-            //        //Melding dat event al bestaat, wil je vervangen.
+            //        TempData["h"] = h;
+            //        TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+            //        return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = h.Events.EventSoort });
             //    }
             //}
 
             //Uitvogelen wat hier een logischere return statement is.
             //Vragen: Meer events toevoegen of naar rooster toe ?
 
-            return View("~/Views/CMS/Dance/Index.cshtml");
+            return View();
         }
 
 
         //Controleert of er al een event is op dat precieze tijdstip en locatie.
         //te doen: Eindtijd - begintijd, checken of het evenement dat je wilt toevoegen BEGINT tijdens een ander event. 
         [HttpPost]
-        public bool CheckIfDuplicateEvent(Evenement e)
+        public Evenement CheckIfDuplicateEvent(Evenement e)
         {
             List<Evenement> evenements = db.Evenements.ToList();
             foreach(Evenement x in evenements)
@@ -173,22 +197,19 @@ namespace ProjectWebApplicatie.Controllers
                 //Checkt voor een toegevoegd event of er al een event is op die tijd en locatie. 
                 if(e.BeginTijd == x.BeginTijd && e.EindTijd == x.EindTijd && e.Locatie == x.Locatie)
                 {
-                    
-                    DuplicateFound(x);
-                    return true;
+                   
+                    return x;
                 }
 
                 //Checkt of de begintijd van een event op locatie X TIJDENS een ander event is op die locatie. Ofwel, checkt voor overlap.
                 else if (e.Locatie == x.Locatie && e.BeginTijd.TimeOfDay > x.BeginTijd.TimeOfDay && e.BeginTijd.TimeOfDay < x.EindTijd.TimeOfDay)
                 {
-
-                    OverlapFound(x);
-                    return true;
+                    return x;
                 }
 
             }
 
-            return false;
+            return null;
         }
 
         // GET: CMSTest/Edit/5
@@ -367,21 +388,9 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Historic/Index.cshtml");
         }
 
+       
 
-        public ActionResult DuplicateFound(Evenement x)
-        {
-            Evenement y = repo.GetChildByParent(x);
-            string msg = "data saved";
 
-           return Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
-
-           
-        }
-
-        public ActionResult OverlapFound(Evenement x)
-        {
-            return Content("<script language='javascript' type='text/javascript'>alert(message);</script>");
-        }
 
     }
 }
