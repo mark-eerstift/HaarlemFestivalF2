@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProjectWebApplicatie.Repositories;
-
+using System.Web.UI;
 
 namespace ProjectWebApplicatie.Controllers
 {
@@ -97,39 +97,39 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult Create(Dance d, Food f, History h, Jazz j)
         {
 
-            Evenement e = new Evenement();
+          
             
             
-             if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
-                {
-                    if (!CheckIfDuplicateEvent(d))
-                    {
+             //if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
+             //   {
+             //       if (!CheckIfDuplicateEvent(d))
+             //       {
                     
-                        db.Evenements.Add(d);
-                        db.SaveChanges();
-                    }
-                    else
-                    {
-                        //Melding dat event al bestaat, wil je vervangen.
-                    }
-                }
+             //           db.Evenements.Add(d);
+             //           db.SaveChanges();
+             //       }
+             //       else
+             //       {
+             //           //Melding dat event al bestaat, wil je vervangen.
+             //       }
+             //   }
 
             
 
-            else if (j.Events.EventSoort == "Jazz" && ModelState.IsValid)
-            {
-                if (!CheckIfDuplicateEvent(j))
-                {
-                    db.Evenements.Add(j);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //Melding dat event al bestaat, wil je vervangen.
-                }
-            }
+            //else if (j.Events.EventSoort == "Jazz" && ModelState.IsValid)
+            //{
+            //    if (!CheckIfDuplicateEvent(j))
+            //    {
+            //        db.Evenements.Add(j);
+            //        db.SaveChanges();
+            //    }
+            //    else
+            //    {
+            //        //Melding dat event al bestaat, wil je vervangen.
+            //    }
+            //}
 
-            else if (f.Events.EventSoort == "Food" && ModelState.IsValid)
+            if (f.Events.EventSoort == "Food" && ModelState.IsValid)
             {
                 if (!CheckIfDuplicateEvent(f))
                 {
@@ -142,18 +142,18 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (h.Events.EventSoort == "History" && ModelState.IsValid)
-            {
-                if (!CheckIfDuplicateEvent(h))
-                {
-                    db.Evenements.Add(h);
-                    db.SaveChanges();
-                }
-                else
-                {
-                    //Melding dat event al bestaat, wil je vervangen.
-                }
-            }
+            //else if (h.Events.EventSoort == "History" && ModelState.IsValid)
+            //{
+            //    if (!CheckIfDuplicateEvent(h))
+            //    {
+            //        db.Evenements.Add(h);
+            //        db.SaveChanges();
+            //    }
+            //    else
+            //    {
+            //        //Melding dat event al bestaat, wil je vervangen.
+            //    }
+            //}
 
             //Uitvogelen wat hier een logischere return statement is.
             //Vragen: Meer events toevoegen of naar rooster toe ?
@@ -371,8 +371,11 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult DuplicateFound(Evenement x)
         {
             Evenement y = repo.GetChildByParent(x);
-            string alert = "Error: An event already takes place at this location at the specified time. \n The event in question: \n " + y;
-            return Content("<script type=\"text/javascript\">alert('" + alert + "');</script>");
+            string msg = "data saved";
+
+           return Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
+
+           
         }
 
         public ActionResult OverlapFound(Evenement x)

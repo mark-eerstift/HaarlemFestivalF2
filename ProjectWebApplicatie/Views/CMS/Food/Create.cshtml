@@ -81,8 +81,9 @@
             @Html.ValidationMessageFor(model => model.EvenementPrijs, "", new { @class = "text-danger" })
         </div>
     </div>
+    @Html.HiddenFor(model => model.Events.EventSoort,
+                new { id= "EventSoort", Value = "Food"})
 
-   
 
 
     <div class="form-group">
