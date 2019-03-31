@@ -257,6 +257,7 @@
     <Compile Include="Models\History.cs" />
     <Compile Include="Models\Jazz.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\ProjectWebApplicatieContextDB.cs" />
     <Compile Include="Models\Reservering.cs" />
     <Compile Include="Models\Restaurant.cs" />
