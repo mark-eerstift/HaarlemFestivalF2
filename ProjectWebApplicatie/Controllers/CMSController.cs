@@ -106,8 +106,9 @@ namespace ProjectWebApplicatie.Controllers
             if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
             {
                 
+
                 Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
-                if (CheckIfDuplicateEvent(d) == null)
+                if (duplicate == null)
                 {
 
                     db.Evenements.Add(d);
@@ -209,7 +210,7 @@ namespace ProjectWebApplicatie.Controllers
 
             }
 
-            return null;
+            return e;
         }
 
         // GET: CMSTest/Edit/5
@@ -255,6 +256,33 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            switch (evenement.Events.EventSoort)
+            {
+                case "Dance":
+                    
+                    
+                    IEnumerable<Dance> danceObject = repo.GetDanceObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), danceObject);
+
+
+                case "Jazz":
+                    IEnumerable<Jazz> jazzObject = repo.GetJazzObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), jazzObject);
+
+                case "History":
+                    IEnumerable<History> historyObject = repo.GetHistoryObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), historyObject);
+                case "Food":
+                    IEnumerable<Food> foodObject = repo.GetFoodObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), foodObject);
+            }
+
             return View(evenement);
         }
 
@@ -264,6 +292,8 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Evenement evenement = db.Evenements.Find(id);
+
+
             db.Evenements.Remove(evenement);
             db.SaveChanges();
             return RedirectToAction("Index");

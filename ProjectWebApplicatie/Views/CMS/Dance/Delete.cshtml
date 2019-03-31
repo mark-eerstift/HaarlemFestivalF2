@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Dance>
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Artiest.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BeginTijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EindTijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locatie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Session)
+        </th>
+
+
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Artiest.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Session)
+            </td>
+
+        </tr>
+    }
+</table>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+    </div>
