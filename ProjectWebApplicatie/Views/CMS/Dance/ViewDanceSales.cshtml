@@ -4,13 +4,13 @@
     ViewBag.Title = "ViewDanceSales";
 }
 
-@{ 
+@{
     var artiest = TempData["artiest"];
     var begintijd = TempData["begintijd"];
     var eindtijd = TempData["eindtijd"];
     var locatie = TempData["locatie"];
     var error = TempData["error"];
-    
+
 }
 
 @if (TempData != null)
@@ -35,35 +35,36 @@
 
 
 
+@{
+
+    var item = Model.First();
+}
+
+@Html.HiddenFor(model => item.Events.EventSoort,
+                    new { id= "EventSoort", Value = "Dance"})
+
 <form action="/CMS/ViewEventSales" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
+    <input type="hidden" name="e" value="@Model" />
     <button type="submit">view all events</button>
 </form>
 
 <form action="/CMS/ViewEventSalesByDate" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
+    <input type="hidden" name="e" value="@Model" />
     <input type="hidden" name="date" value="@thursday" />
     <button type="submit">view thursday events</button>
 </form>
 
 <form action="/CMS/ViewEventSalesByDate" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
+    <input type="hidden" name="e" value="@Model" />
     <input type="hidden" name="date" value="@friday" />
     <button type="submit">view friday events</button>
 </form>
 
 <form action="/CMS/ViewEventSalesByDate" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
+    <input type="hidden" name="e" value="@Model" />
     <input type="hidden" name="date" value="@saturday" />
     <button type="submit">view saturday events</button>
 </form>
-
-
-
-
-
-
-
 
 
 
@@ -72,6 +73,10 @@
         <th>
             @Html.DisplayNameFor(model => model.Artiest.Naam)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Locatie)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.BeginTijd)
         </th>
@@ -93,32 +98,55 @@
 
     @foreach (var item in Model)
     {
-    <tr>
+        <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Artiest.Naam)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BeginTijd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EindTijd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketsTotaal)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketsVerkocht)
-        </td>
-        <td>
-        <form action="/CMS/Delete" Method="GET">
-            
-            <input type="hidden" name="id" value="@item.EvenementID" />
-            <button type="submit">delete events</button>
-        </form>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artiest.Naam)
             </td>
-    </tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketsTotaal)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketsVerkocht)
+            </td>
+
+
+            <td>
+                <form action="/CMS/Delete" Method="GET">
+
+                    <input type="hidden" name="id" value="@item.EvenementID" />
+                    <button type="submit">Delete</button>
+                </form>
+
+                <form action="/CMS/Edit" Method="GET">
+
+                    <input type="hidden" name="id" value="@item.EvenementID" />
+                    <button type="submit">Edit</button>
+                </form>
+
+            </td>
+        </tr>
     }
 
+
+
+
 </table>
+
+<form action="/CMS/Create" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Dance" />
+    <button type="submit">Add new event</button>
+</form>

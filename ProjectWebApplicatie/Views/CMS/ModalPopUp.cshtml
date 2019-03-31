@@ -1,4 +1,4 @@
-﻿@model ProjectWebApplicatie.Models.Evenement
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Evenement>
 
 @{
     ViewBag.Title = "Bootstrap PopUp";
@@ -7,53 +7,91 @@
 <title>@ViewBag.Title</title>
 
 
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 
 @{
-    var artiest = TempData["artiest"];
-    var begintijd = TempData["begintijd"];
-    var eindtijd = TempData["eindtijd"];
-    var locatie = TempData["locatie"];
-    var error = TempData["error"];
-    var evenementID = TempData["dupeEventID"];
-    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string artiest = TempData["artiest"].ToString();
+    string artiest2 = TempData["artiest"] as string;
+    var artiest3 = TempData["artiest"];
+    string artiest4 = artiest3.ToString();
 }
 
-@Html.HiddenFor(model => model.EvenementID,
-                     new { id= "EvenementID", Value = evenementID})
+
+<div>
+    <h4>Event not added: The following event takes place at the specified location and times.</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Artiest
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.BeginTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locatie)
+            </th>
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    @error <\n>
-                        Artiest: @artiest <\n>
-                            Locatie: @locatie <\n>
-                                Begintijd: @begintijd <\n>
-                                    Eindtijd: @eindtijd <\n>
 
-                </p>
-            </div>
-            <div class="modal-footer">
-                <form action="/CMS/Create" Method="GET">
-                    <input type="hidden" name="Eventsoort" value="Dance" />
-                    <button type="submit">Discard current event</button>
-                </form>
-                @Html.ActionLink("Delete previous event", "Delete", new { ID = evenementID })
-            </div>
-        </div>
-    </div>
+
+            <th></th>
+        </tr>
+
+
+        @{
+            var item = Model.First();
+        }
+
+
+        {
+        <tr>
+
+            <td>
+                @artiest
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+
+
+
+        </tr>
+
+
+
+        }
+    </table>
+    <a href="@Url.Action("Delete","CMS", new {id=item.EvenementID })"
+       class="btn btn-primary">Delete conflicting event</a>
+    <a href="@Url.Action("Edit","CMS", new {id=item.EvenementID })"
+       class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Create","CMS", new {Eventsoort=item.Events.EventSoort })"
+       class="btn btn-primary">Cancel</a>
+
+
+
 </div>
+
+
+
+
+
+                
+
+
+
+

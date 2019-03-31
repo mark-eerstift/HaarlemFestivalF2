@@ -1,4 +1,4 @@
-﻿@model ProjectWebApplicatie.Models.Food
+﻿@model ProjectWebApplicatie.Models.Jazz
 
 @{
     ViewBag.Title = "Edit";
@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Food</h4>
+        <h4>Jazz</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.EvenementID)
@@ -65,10 +65,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Restaurant, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Stage, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Restaurant, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Restaurant, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Stage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Stage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Artiest, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Artiest, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Artiest, "", new { @class = "text-danger" })
             </div>
         </div>
 
