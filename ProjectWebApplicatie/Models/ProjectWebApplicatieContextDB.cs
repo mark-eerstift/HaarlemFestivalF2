@@ -21,6 +21,8 @@ namespace ProjectWebApplicatie.Models
 
         public DbSet<ProjectWebApplicatie.Models.Evenement> Evenements { get; set; }
 
+        public DbSet<ProjectWebApplicatie.Models.Order> Orders { get; set; }
+
         public DbSet<ProjectWebApplicatie.Models.Food> Foods { get; set; }
 
         public DbSet<ProjectWebApplicatie.Models.History> Historys { get; set; }
