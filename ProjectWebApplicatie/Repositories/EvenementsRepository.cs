@@ -12,6 +12,14 @@ namespace ProjectWebApplicatie.Repositories
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
 
+
+        public Evenement GetChildByParent(Evenement x)
+        {
+
+            var q = db.Evenements.Where(u => u.EvenementID == x.EvenementID && u.Events.EventSoort == x.Events.EventSoort).FirstOrDefault();
+            return q;
+        }
+
         public void AddEvenement(Evenement evenement)
         {
             db.Evenements.Add(evenement);

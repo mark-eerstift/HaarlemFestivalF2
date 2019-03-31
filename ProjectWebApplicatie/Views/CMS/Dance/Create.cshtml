@@ -1,4 +1,4 @@
-﻿@model ProjectWebApplicatie.Models.Evenement
+﻿@model ProjectWebApplicatie.Models.Dance
 
 
 
@@ -26,18 +26,18 @@
 
     <p>2018-11-11 00:00:00.000</p>
     <div class="form-group">
-        @Html.LabelFor(model => model.Dance.BeginTijd, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.BeginTijd, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Dance.BeginTijd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.BeginTijd, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.BeginTijd, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Dance.EindTijd, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.EindTijd, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Dance.EindTijd, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Dance.EindTijd, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.EindTijd, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EindTijd, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -66,18 +66,18 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Dance.Artiest, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Artiest, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Dance.Artiest, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Dance.Artiest, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Artiest, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Artiest, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Dance.Session, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Session, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Dance.Session, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Dance.Session, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Session, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Session, "", new { @class = "text-danger" })
         </div>
     </div>
     @Html.HiddenFor(model => model.Events.EventSoort,

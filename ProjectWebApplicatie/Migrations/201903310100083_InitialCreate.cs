@@ -29,23 +29,11 @@ namespace ProjectWebApplicatie.Migrations
                         Artiest_Naam1 = c.String(),
                         Artiest_Genre1 = c.String(),
                         Discriminator = c.String(nullable: false, maxLength: 128),
-                        Dance_EvenementID = c.Int(),
                         Events_EventId = c.Int(),
-                        food_EvenementID = c.Int(),
-                        History_EvenementID = c.Int(),
-                        Jazz_EvenementID = c.Int(),
                     })
                 .PrimaryKey(t => t.EvenementID)
-                .ForeignKey("dbo.Evenements", t => t.Dance_EvenementID)
                 .ForeignKey("dbo.Events", t => t.Events_EventId)
-                .ForeignKey("dbo.Evenements", t => t.food_EvenementID)
-                .ForeignKey("dbo.Evenements", t => t.History_EvenementID)
-                .ForeignKey("dbo.Evenements", t => t.Jazz_EvenementID)
-                .Index(t => t.Dance_EvenementID)
-                .Index(t => t.Events_EventId)
-                .Index(t => t.food_EvenementID)
-                .Index(t => t.History_EvenementID)
-                .Index(t => t.Jazz_EvenementID);
+                .Index(t => t.Events_EventId);
             
             CreateTable(
                 "dbo.Tickets",
@@ -115,11 +103,7 @@ namespace ProjectWebApplicatie.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Evenements", "Jazz_EvenementID", "dbo.Evenements");
-            DropForeignKey("dbo.Evenements", "History_EvenementID", "dbo.Evenements");
-            DropForeignKey("dbo.Evenements", "food_EvenementID", "dbo.Evenements");
             DropForeignKey("dbo.Evenements", "Events_EventId", "dbo.Events");
-            DropForeignKey("dbo.Evenements", "Dance_EvenementID", "dbo.Evenements");
             DropForeignKey("dbo.Tickets", "Evenement_EvenementID", "dbo.Evenements");
             DropForeignKey("dbo.Tickets", "Event_EventId", "dbo.Events");
             DropForeignKey("dbo.EventPages", "Event_EventId", "dbo.Events");
@@ -128,11 +112,7 @@ namespace ProjectWebApplicatie.Migrations
             DropIndex("dbo.EventPages", new[] { "Event_EventId" });
             DropIndex("dbo.Tickets", new[] { "Evenement_EvenementID" });
             DropIndex("dbo.Tickets", new[] { "Event_EventId" });
-            DropIndex("dbo.Evenements", new[] { "Jazz_EvenementID" });
-            DropIndex("dbo.Evenements", new[] { "History_EvenementID" });
-            DropIndex("dbo.Evenements", new[] { "food_EvenementID" });
             DropIndex("dbo.Evenements", new[] { "Events_EventId" });
-            DropIndex("dbo.Evenements", new[] { "Dance_EvenementID" });
             DropTable("dbo.Vrijwilligers");
             DropTable("dbo.Images");
             DropTable("dbo.EventPages");

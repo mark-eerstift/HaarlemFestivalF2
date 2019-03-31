@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ProjectWebApplicatie.Repositories;
 
 
 namespace ProjectWebApplicatie.Controllers
@@ -14,6 +15,7 @@ namespace ProjectWebApplicatie.Controllers
     {
 
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private IEvenementsRepository repo = new EvenementsRepository();
         [Authorize]
         
 
@@ -92,16 +94,18 @@ namespace ProjectWebApplicatie.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Evenement e, string Eventsoort)
+        public ActionResult Create(Dance d, Food f, History h, Jazz j)
         {
+
+            Evenement e = new Evenement();
             
-
-
-             if (Eventsoort == "Dance" && ModelState.IsValid)
+            
+             if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
                 {
-                    if (!CheckIfDuplicateEvent(e))
+                    if (!CheckIfDuplicateEvent(d))
                     {
-                        db.Evenements.Add(e);
+                    
+                        db.Evenements.Add(d);
                         db.SaveChanges();
                     }
                     else
@@ -112,11 +116,11 @@ namespace ProjectWebApplicatie.Controllers
 
             
 
-            else if (Eventsoort == "Jazz" && ModelState.IsValid)
+            else if (j.Events.EventSoort == "Jazz" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(j))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(j);
                     db.SaveChanges();
                 }
                 else
@@ -125,11 +129,11 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (Eventsoort == "Food" && ModelState.IsValid)
+            else if (f.Events.EventSoort == "Food" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(f))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(f);
                     db.SaveChanges();
                 }
                 else
@@ -138,11 +142,11 @@ namespace ProjectWebApplicatie.Controllers
                 }
             }
 
-            else if (Eventsoort == "History" && ModelState.IsValid)
+            else if (h.Events.EventSoort == "History" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(e))
+                if (!CheckIfDuplicateEvent(h))
                 {
-                    db.Evenements.Add(e);
+                    db.Evenements.Add(h);
                     db.SaveChanges();
                 }
                 else
@@ -260,7 +264,7 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult ViewEventSales(Evenement e, string Eventsoort)
         {
             
-
+            
             if (Eventsoort == "Dance")
             {
 
@@ -366,9 +370,9 @@ namespace ProjectWebApplicatie.Controllers
 
         public ActionResult DuplicateFound(Evenement x)
         {
-            string alert = "Error: An event already takes place at this location at the specified time. \n ";
-              
-            return Content("<script language='javascript' type='text/javascript'>alert(message);</script>");
+            Evenement y = repo.GetChildByParent(x);
+            string alert = "Error: An event already takes place at this location at the specified time. \n The event in question: \n " + y;
+            return Content("<script type=\"text/javascript\">alert('" + alert + "');</script>");
         }
 
         public ActionResult OverlapFound(Evenement x)

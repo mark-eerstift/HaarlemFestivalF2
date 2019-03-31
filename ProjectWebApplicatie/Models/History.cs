@@ -10,6 +10,6 @@ namespace ProjectWebApplicatie.Models
     {
         public virtual string EindLocatie { get; set; }
         public virtual string Taal { get; set; }
-        public virtual Event Events { get; set; }
+        
     }
 }

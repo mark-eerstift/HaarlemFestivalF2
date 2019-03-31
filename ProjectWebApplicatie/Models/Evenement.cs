@@ -19,8 +19,8 @@ namespace ProjectWebApplicatie.Models
         public virtual int TicketsTotaal { get; set; }
         public virtual int TicketsVerkocht { get; set; }
         public virtual double EvenementPrijs { get; set; }
-        
-       
+        public virtual Event Events { get; set; }
+
     }
 
 
