@@ -38,6 +38,11 @@ namespace ProjectWebApplicatie.Repositories
             return db.Evenements.ToList();
         }
 
+        public IEnumerable<Order> GetOrderListDb()
+        {
+            return db.Orders.ToList();
+        }
+
         public void Dispose()
         {
             db.Dispose();
