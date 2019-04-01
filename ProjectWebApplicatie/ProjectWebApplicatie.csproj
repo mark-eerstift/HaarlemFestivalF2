@@ -295,6 +295,7 @@
     <Content Include="Content\images\arrows\arrow_selfmade_white.pdn" />
     <Content Include="Content\images\arrows\backgroundJazz.pdn" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\cms\main.js" />
     <Content Include="Scripts\jazz\get_tickets.js" />
     <Content Include="Scripts\jazz\main.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -383,6 +384,8 @@
     <Content Include="Views\CMS\Historic\ViewHistorySales.cshtml" />
     <Content Include="Views\CMS\Jazz\ViewJazzSales.cshtml" />
     <Content Include="Views\Jazzs\Tickets.cshtml" />
+    <Content Include="Views\CMS\Jazz\ChangeTexts.cshtml" />
+    <Content Include="Views\CMS\Jazz\ChangeImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

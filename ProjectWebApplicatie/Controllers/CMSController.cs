@@ -448,9 +448,43 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Historic/Index.cshtml");
         }
 
-       
 
-
+        // Go to page of changing texts on a page
+        [Authorize]
+        public ActionResult ChangeTexts(Evenement e)
+        {
+            switch(e.Events.EventSoort)
+            {
+                case "dance":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "historic":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "food":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "jazz":
+                    return View("~/CMS/Jazz/ChangeTexts.cshtml");
+                default:
+                    return View("~/Views/CMS/Index.cshtml");
+            }
+        }
+        // Go to page of changing images on a page
+        [Authorize]
+        public ActionResult ChangeImages(Evenement e)
+        {
+            switch (e.Events.EventSoort)
+            {
+                case "dance":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "historic":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "food":
+                    return View("~/Views/CMS/Index.cshtml");
+                case "jazz":
+                    return View("~/CMS/Jazz/ChangeImages.cshtml");
+                default:
+                    return View("~/Views/CMS/Index.cshtml");
+            }
+        }
 
     }
 }

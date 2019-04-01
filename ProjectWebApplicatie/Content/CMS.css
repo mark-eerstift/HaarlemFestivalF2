@@ -12,3 +12,11 @@ nav li {
     margin-bottom: auto !important;
 }
 
+.textboxEditText {
+    display: block;
+    float: left;
+    position: relative;
+    height: 50vh;
+    width: 50vw;
+}
+

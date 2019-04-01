@@ -3,7 +3,9 @@
 
 }
 
-
+@{
+    Layout = "~/Views/Shared/_MyCMSLayout.cshtml";
+}
 @{
     var test = new ProjectWebApplicatie.Models.Jazz();
 
@@ -30,4 +32,14 @@
 <form action="/CMS/Delete" Method="GET">
     <input type="hidden" name="Eventsoort" value="Jazz" />
     <button type="submit">Delete Event</button>
+</form>
+
+<form action="/CMS/ChangeTexts" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">Change Texts</button>
+</form>
+
+<form action="/CMS/ChangeImages" Method="GET">
+    <input type="hidden" name="Eventsoort" value="Jazz" />
+    <button type="submit">Change Images</button>
 </form>
