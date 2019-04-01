@@ -10,8 +10,5 @@ namespace ProjectWebApplicatie.Models
     {
         public virtual string Stage { get; set; }
         public virtual Artiest Artiest { get; set; }
-        
-
-
     }
 }

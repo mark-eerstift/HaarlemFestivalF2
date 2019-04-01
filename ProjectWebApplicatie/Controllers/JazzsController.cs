@@ -17,7 +17,19 @@ namespace ProjectWebApplicatie.Controllers
         // GET: Jazzs
         public ActionResult Index()
         {
-            return View(db.Jazzs.ToList());
+            List<Jazz> orderedList = db.Jazzs.ToList();
+            orderedList.Sort((x, y) => x.BeginTijd.CompareTo(y.BeginTijd)); // lambda function sorting the list by date so the timetable works
+
+            return View(orderedList);
+        }        
+        
+        // GET: Jazzs
+        public ActionResult Tickets()
+        {
+            List<Jazz> orderedList = db.Jazzs.ToList();
+            orderedList.Sort((x, y) => x.BeginTijd.CompareTo(y.BeginTijd)); // lambda function sorting the list by date so the timetable works
+
+            return View(orderedList);
         }
 
         // GET: Jazzs/Details/5
@@ -46,7 +58,7 @@ namespace ProjectWebApplicatie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,Stage,Artiest")] Jazz jazz)
+        public ActionResult Create([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,EvenementPrijs,Stage,Artiest")] Jazz jazz)
         {
             if (ModelState.IsValid)
             {

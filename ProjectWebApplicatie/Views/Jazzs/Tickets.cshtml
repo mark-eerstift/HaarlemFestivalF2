@@ -1,0 +1,158 @@
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Jazz>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Tickets";
+    @Styles.Render("~/Content/css/jazz-get_tickets.css")
+}
+
+
+<div class="outer-container">
+    <aside class="left-container">
+        <div class="page-text-container">
+            <h2>Only a few clicks away from a perfect day!</h2>
+            <p>
+                When you get your tickets be sure to check out the rest of Haarlem
+                Festival as well! Maybe schedule some diner plans in between shows
+                or a nice historic walk. Haarlem has a lot to offer!
+            </p>
+        </div>
+        <!-- Timetable from database -->
+        <div class="timetable-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Location:</th>
+                        <th>Day:</th>
+                        <th>Playtime:</th>
+                        <th>Artist:</th>
+                        <th>Tickets Left:</th>
+                        <th>Stage:</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{
+                        var lastItem = Model.Last();
+
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @{
+                                        string location = "";
+                                        if (item.Locatie != lastItem.Locatie)
+                                        {
+                                            location = item.Locatie;
+                                        }
+                                    }
+                                    @Html.DisplayFor(modelItem => location)
+                                </td>
+                                <td>
+                                    @{
+                                        string dayString = "";
+                                        if (item.BeginTijd.Day != lastItem.BeginTijd.Day)
+                                        {
+                                            int day = item.BeginTijd.Day;
+                                            switch (day)
+                                            {
+                                                case 26:
+                                                    dayString = "Thursday 26 July";
+                                                    break;
+                                                case 27:
+                                                    dayString = "Friday 27 July";
+                                                    break;
+                                                case 28:
+                                                    dayString = "Saturday 28 July";
+                                                    break;
+                                                case 29:
+                                                    dayString = "Sunday 29 July";
+                                                    break;
+                                            }
+                                        } }
+                                    @Html.DisplayFor(modelItem => dayString)
+                                </td>
+                                <td>
+                                    @{
+                                        string timeString = item.BeginTijd.ToShortDateString();
+                                        timeString += " - ";
+                                        timeString += item.EindTijd.ToShortTimeString();
+                                    }
+                                    @Html.DisplayFor(modelItem => timeString)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Artiest.Naam)
+                                </td>
+                                <td>
+                                    @{
+                                        int ticketsLeft = item.TicketsTotaal - item.TicketsVerkocht;
+                                        string ticketsLeftString = ticketsLeft.ToString();
+
+                                        // At the Grote Markt there are no tickets!
+                                        if (item.TicketsTotaal == 0)
+                                        {
+                                            ticketsLeftString = "FREE";
+                                        }
+                                    }
+                                    @Html.DisplayFor(modelItem => ticketsLeftString)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Stage)
+                                </td>
+                            </tr>
+
+                            lastItem = item;
+                        }}
+                </tbody>
+            </table>
+        </div>
+    </aside>
+    <aside class="right-container">
+        <div class="ticket_prices-container">
+            <h2>Ticket prices:</h2>
+            <p>
+                <ul>
+                    <li>ALL-access all days: €80</li>
+                    <li>ALL-access specific day: €35</li>
+                    <li>Specific artist main hall: €15</li>
+                    <li>Specific artist second hall: €10</li>
+                </ul>
+            </p>
+        </div>
+        <div class="ticket_select-container">
+            <h2>Jazz Tickets:</h2>
+
+            <form action="" method="post">
+                <span>Which type:</span>
+                <select class="ticket_select" name="ticket_type" id="ticket_type" required>
+                    <option value="0" disabled selected>- Select Ticket -</option>
+                    <option value="all_access">All access</option>
+                    <option value="specific_artist">Specific Artist</option>
+                </select>
+                <span>Which day:</span>
+                <select class="ticket_select" name="ticket_date" id="ticket_date" required>
+                    <option value="0" disabled selected>- Select Date -</option>
+                </select>
+                <span class="jazz_artist">Which artist:</span>
+                <select class="ticket_select jazz_artist" name="ticket_name" id="ticket_name">
+                    <option value="0" disabled selected>- Select Artist -</option>
+                </select>
+                <span>How many:</span>
+                <input type="number" name="amount" min="0" max="12" value="0" step="1" required>
+
+                <span id="jazz-lbl-total_price">Total price: €0.00</span>
+
+                <div class="btn-add_to_cart-container">
+                    <button type="submit" class="btn-add_to_cart" name="btn-add_to_cart" id="jazz-btn-add_to_cart">
+                        Add to cart
+                    </button>
+                </div>
+                <div class="" id="btn-add_to_cart-image"></div>
+            </form>
+        </div>
+    </aside>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jazz/get_tickets.js")
+

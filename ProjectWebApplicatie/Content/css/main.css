@@ -1,0 +1,17 @@
+﻿/* Standard html body css */
+html, body {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0;
+}
+
+h2 {
+    margin: 0;
+}
+
+.container.body-content {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}

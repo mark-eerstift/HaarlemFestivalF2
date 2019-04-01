@@ -1,31 +1,78 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Haarlem Festival Home Page";
+    @Styles.Render("~/Content/css/homepage.css")
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!-- Homepage Haarlem Festival Banner -->
+<div id="homepage-banner-image"></div>
+<div class="homepage-banner-arrow" id="homepage-banner-arrow-left"></div>
+<div class="homepage-banner-arrow" id="homepage-banner-arrow-right"></div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- Homepage info -->
+<div id="homepage-background-image">
+    <div class="subpage-container">
+        <article class="homepage-text-container right" id="homepage-text-food">
+            <h2>Food</h2>
+            <p>
+                Discover the best restaurants Haarlem has to offer this summer!
+                Treat yourself to a classic dutch meal in restaurant Fris, or
+                enjoy some authentic french food at Ratatouille. Bon Apetit!
+                Press read more to view the full line-up of restaurants,
+                and to make your reservation.
+            </p>
+            <br />
+            <br />
+            <br />
+            <a href="#food.html" class="btn-champion_page food">Learn More</a>
+            <a href="#food-get_tickets.html" class="btn-champion_page food">Get Tickets</a>
+        </article>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="subpage-container">
+        <article class="homepage-text-container left" id="homepage-text-dance">
+            <h2>Dance</h2>
+            <p>
+                This summer, Haarlem will transform into the EDM capital of the
+                world. Five of Haarlem’s hottest clubs will be packed all weekend,
+                with industry icons like Hardwell, Martin Garrix, and Afrojack
+                playing sets deep into the night.
+            </p>
+            <br />
+            <br />
+            <br />
+            <a href="#dance.html" class="btn-champion_page dance">Learn More</a>
+            <a href="#dance-get_tickets.html" class="btn-champion_page dance">Get Tickets</a>
+        </article>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="subpage-container">
+        <article class="homepage-text-container right" id="homepage-text-jazz">
+            <h2>Jazz</h2>
+            <p>
+                Gare du Nord. Soul Six. Myles Sanko. These are some of the biggest
+                names in jazz and they are all travelling to Haarlem this summer!
+                Over the course of three days, over twenty artists will perform
+                in Haarlem’s iconic Patronaat concert hall.
+            </p>
+            <br />
+            <br />
+            <br />
+            <a href="~/Jazzs/Index" class="btn-champion_page jazz">Learn More</a>
+            <a href="~/Jazzs/Tickets" class="btn-champion_page jazz">Get Tickets</a>
+        </article>
+    </div>
+    <div class="subpage-container">
+        <article class="homepage-text-container left" id="homepage-text-history">
+            <h2>History</h2>
+            <p>
+                This summer, Haarlem festival has organised several tours that
+                will take you throughout the city. You’ll visit churches that
+                are hundreds of years old, war-damaged buildings and we’ll tell
+                you the stories behind the cities’ most famous statues.
+            </p>
+            <br />
+            <br />
+            <br />
+            <a href="#history.html" class="btn-champion_page history">Learn More</a>
+            <a href="#history-get_tickets.html" class="btn-champion_page history">Get Tickets</a>
+        </article>
     </div>
 </div>

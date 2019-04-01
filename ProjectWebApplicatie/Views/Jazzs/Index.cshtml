@@ -1,69 +1,227 @@
 ﻿@model IEnumerable<ProjectWebApplicatie.Models.Jazz>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jazz Home";
+    @Styles.Render("~/Content/css/jazz-home.css")
+
+    <!-- Webapplication Icon -->
+    <link rel="icon" href="@Url.Content("~/content/images/navbar-logo-purple.png")" />
 }
 
-<h2>Index</h2>
+<!-- Get tickets button -->
+<div class="btn-get_tickets-container">
+    <a href="~/Jazzs/Tickets" class="btn-get_tickets">GET TICKETS</a>
+    <div id="btn-get_tickets-image"></div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Locatie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BeginTijd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EindTijd)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketsTotaal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TicketsVerkocht)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Stage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Artiest)
-        </th>
-        <th></th>
-    </tr>
+<!-- First page -->
+<div class="page-container" id="jazz_image_1">
+    <div class="anchor" id="anchor1"></div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Locatie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BeginTijd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EindTijd)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketsTotaal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketsVerkocht)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artiest)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EvenementID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EvenementID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EvenementID })
-        </td>
-    </tr>
-}
+    <!-- Page navigation buttons -->
+    <div class="page-nav-buttons-container">
+        <div class="page-nav-button-container">
+            <a href="#anchor2" class="link-page">
+                <div class="page-nav-arrow down"></div>
+                <div class="page-nav-arrow-text">Free Show!</div>
+            </a>
+        </div>
+        <div class="page-nav-button-container link-page2">
+            <a href="#anchor3" class="link-page">
+                <div class="page-nav-arrow down"></div>
+                <div class="page-nav-arrow-text">Great Venue</div>
+            </a>
+        </div>
+        <div class="page-nav-button-container link-page3">
+            <a href="#anchor4" class="link-page">
+                <div class="page-nav-arrow down"></div>
+                <div class="page-nav-arrow-text">Timetable</div>
+            </a>
+        </div>
+    </div>
 
-</table>
+    <h1 class="subpage_title" id="jazz_subpage_title_1">26-29 July</h1>
+
+    <article class="subpage_text" id="jazz_subpage_text_1">
+        From the 26th through to the 29th of July Haarlem Festival presents
+        an amazing Jazz event for all jazz lovers to enjoy!
+        Artist from all over the world will be performing in the greatest
+        venue of Haarlem!
+        Check out the incredible line-up and be sure to get your tickets fast!
+        Also don't forget to check out the FREE show on sunday!
+    </article>
+</div>
+
+<!-- Second page -->
+<div class="page-container" id="jazz_image_2">
+    <div class="anchor" id="anchor2"></div>
+
+    <!-- Page navigation buttons -->
+    <div class="page-nav-buttons-container">
+        <div class="page-nav-button-container">
+            <a href="#anchor1" class="link-page">
+                <div class="page-nav-arrow up"></div>
+                <div class="page-nav-arrow-text">Back to top</div>
+            </a>
+        </div>
+        <div class="page-nav-button-container">
+            <a href="#anchor3" class="link-page">
+                <div class="page-nav-arrow down"></div>
+                <div class="page-nav-arrow-text">Great Venue</div>
+            </a>
+        </div>
+    </div>
+
+    <h1 class="subpage_title" id="jazz_subpage_title_2">Free Show!</h1>
+
+    <article class="subpage_text" id="jazz_subpage_text_2">
+        Yes you have read that right! On sunday there will be a very big
+        performance for you to enjoy free of charge. The big stage at the
+        "Grote Markt" of Haarlem will be a jazz heaven! Come experience the
+        great music with all your family and friends!
+    </article>
+</div>
+
+<!-- Third page -->
+<div class="page-container" id="jazz_image_3">
+    <div class="anchor" id="anchor3"></div>
+
+    <!-- Page navigation buttons -->
+    <div class="page-nav-buttons-container">
+        <div class="page-nav-button-container">
+            <a href="#anchor1" class="link-page">
+                <div class="page-nav-arrow up"></div>
+                <div class="page-nav-arrow-text">Back to top</div>
+            </a>
+        </div>
+        <div class="page-nav-button-container">
+            <a href="#anchor4" class="link-page">
+                <div class="page-nav-arrow down"></div>
+                <div class="page-nav-arrow-text">Timetable</div>
+            </a>
+        </div>
+    </div>
+
+    <h1 class="subpage_title" id="jazz_subpage_title_3">Great Venue</h1>
+
+    <article class="subpage_text" id="jazz_subpage_text_3">
+        This year Haarlem Festival has aquired the best music venue that
+        Haarlem has to offer. Enjoy great acoustics in the main and second
+        hall of Patronaat. Through extensive efforts of the Patronaat
+        employees you will feel pure joy as the amazing artists we have
+        booked this year will entertain you to the fullest. Take a look
+        down below for the timetable and see the artists that will blow
+        your mind with wonderfull jazz music.
+    </article>
+</div>
+
+<!-- Fourth page -->
+<div class="page-container" id="jazz_image_4">
+    <div class="anchor" id="anchor4"></div>
+
+    <!-- Page navigation buttons -->
+    <div class="page-nav-buttons-container timetable_page">
+        <div class="page-nav-button-container">
+            <a href="#anchor1" class="link-page">
+                <div class="page-nav-arrow up"></div>
+                <div class="page-nav-arrow-text">Back to top</div>
+            </a>
+        </div>
+    </div>
+
+    <h1 class="subpage_title" id="jazz_subpage_title_4">Timetable</h1>
+
+    <!-- Timetable from database -->
+    <div class="timetable-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Location:</th>
+                    <th>Day:</th>
+                    <th>Playtime:</th>
+                    <th>Artist:</th>
+                    <th>Tickets Left:</th>
+                    <th>Stage:</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @{
+                    var lastItem = Model.Last();
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    string location = "";
+                                    if (item.Locatie != lastItem.Locatie)
+                                    {
+                                        location = item.Locatie;
+                                    }
+                                }
+                                @Html.DisplayFor(modelItem => location)
+                            </td>
+                            <td>
+                                @{
+                                    string dayString = "";
+                                    if (item.BeginTijd.Day != lastItem.BeginTijd.Day)
+                                    {
+                                        int day = item.BeginTijd.Day;
+                                        switch (day)
+                                        {
+                                            case 26:
+                                                dayString = "Thursday 26 July";
+                                                break;
+                                            case 27:
+                                                dayString = "Friday 27 July";
+                                                break;
+                                            case 28:
+                                                dayString = "Saturday 28 July";
+                                                break;
+                                            case 29:
+                                                dayString = "Sunday 29 July";
+                                                break;
+                                        }
+                                    } }
+                                @Html.DisplayFor(modelItem => dayString)
+                            </td>
+                            <td>
+                                @{
+                                    string timeString = item.BeginTijd.ToShortTimeString();
+                                    timeString += " - ";
+                                    timeString += item.EindTijd.ToShortTimeString();
+                                }
+                                @Html.DisplayFor(modelItem => timeString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Artiest.Naam)
+                            </td>
+                            <td>
+                                @{
+                                    int ticketsLeft = item.TicketsTotaal - item.TicketsVerkocht;
+                                    string ticketsLeftString = ticketsLeft.ToString();
+
+                                    // At the Grote Markt there are no tickets!
+                                    if (item.TicketsTotaal == 0)
+                                    {
+                                        ticketsLeftString = "FREE";
+                                    }
+                                }
+                                @Html.DisplayFor(modelItem => ticketsLeftString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stage)
+                            </td>
+                        </tr>
+
+                        lastItem = item;
+                    }}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/jazz/main.js")

@@ -1,0 +1,125 @@
+﻿#homepage-banner-image {
+    width: 100%;
+    height: 700px;
+    background: #1D1D1D url("../images/homepage-banner.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.homepage-banner-arrow {
+    background-image: url("../images/arrows/arrow_selfmade_white.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: bounce 1s infinite alternate;
+    position: absolute;
+    z-index: 10000;
+    width: 100px;
+    height: 100px;
+}
+
+#homepage-banner-arrow-left {
+    top: 450px;
+    left: 24%;
+}
+
+#homepage-banner-arrow-right {
+    top: 130px;
+    right: 32%;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+#homepage-background-image {
+    width: 100%;
+    height: calc(100% * 4);
+    background: #1D1D1D url("../images/homepage-long_background.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.subpage-container {
+    position: relative;
+    height: 100vh;
+}
+
+.homepage-text-container {
+    width: 30%;
+    position: absolute;
+    top: 20%;
+}
+
+.homepage-text-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+    color: white;
+}
+
+.homepage-text-container p {
+    font-family: "candara", sans-serif;
+    font-size: 2.2rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+    line-height: 1.5em;
+    color: white;
+}
+
+.homepage-text-container.left {
+    left: 170px;
+}
+
+.homepage-text-container.right {
+    right: 170px;
+}
+
+.btn-champion_page {
+    padding: 8px 20px;
+    border-radius: 5px;
+    width: 100px;
+    height: 45px;
+    font-family: "candara", sans-serif;
+    font-size: 2.4rem;
+    font-weight: normal;
+    letter-spacing: 3px;
+    line-height: 1.8rem;
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    margin-top: 30px;
+}
+
+.btn-champion_page.food {
+    background-color: #E19C35;
+}
+
+.btn-champion_page.dance {
+    background-color: #B81717;
+}
+
+.btn-champion_page.jazz {
+    background-color: #772465;
+}
+
+.btn-champion_page.history {
+    background-color: #995484;
+}
+
+.btn-champion_page:hover {
+    text-decoration: underline;
+    box-shadow: 5px 5px 5px #333;
+    text-shadow: 1px 1px 1px #333;
+    transition: 0.1s;
+    color: white;
+}

@@ -1,0 +1,103 @@
+﻿/* Menu bar */
+/* The navigation bar */
+.mynavbar {
+    overflow: hidden;
+    background-color: #333333DD;
+    position: absolute;
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    height: 76px;
+    padding: 8px;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.mynavbar .image-logo {
+    background-image: url(../images/navbar-logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 50px;
+    height: 60px;
+    float: left;
+    display: block;
+    margin-right: 3%;
+    margin-left: 10%;
+    transition: 0.1s;
+}
+
+.mynavbar .image-logo:hover {
+    background-image: url(../images/navbar-logo-dark.png);
+    cursor: pointer;
+}
+
+.mynavbar-buttons {
+    width: 60%;
+    float: left;
+    display: block;
+}
+
+.mynavbar .mynavbar-buttons a {
+    float: left;
+    display: block;
+    color: white;
+    background: #1D1D1D;
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 3px;
+    text-decoration: none;
+    border: 1px solid #AAAAAAAA;
+    box-sizing: border-box;
+    height: 50px;
+    margin-top: 5px;
+    width: calc(100%/6);
+    font-family: 'Merriweather', serif;
+    font-size: 1.6em;
+    transition: 0.1s;
+}
+
+.mynavbar .mynavbar-buttons a:hover {
+    background: white;
+    color: #1D1D1D;
+}
+
+.mynavbar .icon-socialmedia {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    float: left;
+    display: block;
+    margin-left: 1%;
+    margin-top: 5px;
+    transition: 0.1s;
+}
+
+.mynavbar .icon-socialmedia.facebook {
+    margin-left: 3%;
+    background-image: url(../images/Facebook/facebook-icon-white.png);
+}
+
+.mynavbar .icon-socialmedia.instagram {
+    background-image: url(../images/Instagram/instagram-logo-white512.png);
+}
+
+.mynavbar .icon-socialmedia.twitter {
+    background-image: url(../images/Twitter/twitter-logo_white.png);
+}
+
+.mynavbar .icon-socialmedia.facebook:hover {
+    background-image: url(../images/Facebook/facebook-icon-normal.png);
+    cursor: pointer;
+}
+
+.mynavbar .icon-socialmedia.instagram:hover {
+    background-image: url(../images/Instagram/instagram-logo-selfmade-normal.png);
+    cursor: pointer;
+}
+
+.mynavbar .icon-socialmedia.twitter:hover {
+    background-image: url(../images/Twitter/twitter-logo_normal.png);
+    cursor: pointer;
+}

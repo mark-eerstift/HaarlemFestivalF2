@@ -1,0 +1,21 @@
+﻿.footer {
+    background: #282e34;
+    height: 55px;
+    text-align: center;
+    padding-top: 15px;
+    box-sizing: border-box;
+    bottom: 0px;
+    position: relative;
+    width: 100%;
+}
+
+.copyright-text {
+    margin: 0;
+    font-family: "arial";
+    font-size: 1.3rem;
+    color: #DDD;
+    text-decoration: none;
+    font-weight: lighter;
+    display: inline-block;
+    vertical-align: middle;
+}

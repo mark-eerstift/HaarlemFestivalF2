@@ -5,34 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/css/footer.css")
+    @Styles.Render("~/Content/css/main.css")
+    @Styles.Render("~/Content/css/navbar.css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Font-families -->
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+    <!-- Webapplication Icon -->
+    <link rel="icon" href="@Url.Content("~/content/images/navbar-logo-dark.png")" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Dance", "Dance", "Home")</li>
-                </ul>
-            </div>
+    <!-- Use "a" for all the links so the grey url thing in the bottom left shows -->
+    <nav class="mynavbar">
+        <a href="homepage.html" class="image-logo"></a>
+        <div class="mynavbar-buttons">
+            <a href="~/Home/Index">HOME</a>
+            <a href="~/Foods/Index">FOOD</a>
+            <a href="~/Dances/Index">DANCE</a>
+            <a href="~/Jazzs/Index">JAZZ</a>
+            <a href="~/Histories/Index">HISTORY</a>
+            <a href="~/Tickets/Index">CART</a>
         </div>
-    </div>
+        <a href="#facebook" class="icon-socialmedia facebook"></a>
+        <a href="#instagram" class="icon-socialmedia instagram"></a>
+        <a href="#twitter" class="icon-socialmedia twitter"></a>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="footer">
+            <p class="copyright-text">&copy; @DateTime.Now.Year - Haarlem Festival Group F2</p>
         </footer>
     </div>
 
