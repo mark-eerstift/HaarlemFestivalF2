@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using ProjectWebApplicatie.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace ProjectWebApplicatie.Repositories
 {
@@ -19,6 +20,31 @@ namespace ProjectWebApplicatie.Repositories
             var q = db.Evenements.Where(u => u.EvenementID == x.EvenementID && u.Events.EventSoort == x.Events.EventSoort).FirstOrDefault();
             return q;
         }
+
+        public IEnumerable<Dance> GetDanceObject(Evenement x)
+        {
+            return db.Dances.Where(u => u.EvenementID == x.EvenementID); 
+        }
+
+        public IEnumerable<Jazz> GetJazzObject(Evenement x)
+        {
+
+            return db.Jazzs.Where(u => u.EvenementID == x.EvenementID);
+        }
+
+        public IEnumerable<History> GetHistoryObject(Evenement x)
+        {
+
+            return db.Historys.Where(u => u.EvenementID == x.EvenementID);
+        }
+
+        public IEnumerable<Food> GetFoodObject(Evenement x)
+        {
+
+            return db.Foods.Where(u => u.EvenementID == x.EvenementID);
+        }
+
+
 
         public void AddEvenement(Evenement evenement)
         {

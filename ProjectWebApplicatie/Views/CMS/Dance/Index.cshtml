@@ -9,8 +9,11 @@
 
 <h2>DanceOverzicht</h2>
 
+@Html.HiddenFor(model => model.Events.EventSoort,
+                    new { id= "EventSoort", Value = "Dance"})
+
 <form action="/CMS/ViewEventSales" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
+    <input type="hidden" name="e" value="@Model" />
     <button type="submit">view all events</button>
 </form>
 
@@ -19,13 +22,5 @@
     <button type="submit">Create event</button>
 </form>
 
-<form action="/CMS/Edit" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
-    <button type="submit">Edit event</button>
-</form>
 
-<form action="/CMS/Delete" Method="GET">
-    <input type="hidden" name="Eventsoort" value="Dance" />
-    <button type="submit">Delete Event</button>
-</form>
 

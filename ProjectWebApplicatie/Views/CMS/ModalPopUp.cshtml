@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Evenement>
+
+@{
+    ViewBag.Title = "Bootstrap PopUp";
+}
+
+<title>@ViewBag.Title</title>
+
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string artiest = TempData["artiest"].ToString();
+    string artiest2 = TempData["artiest"] as string;
+    var artiest3 = TempData["artiest"];
+    string artiest4 = artiest3.ToString();
+}
+
+
+<div>
+    <h4>Event not added: The following event takes place at the specified location and times.</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                Artiest
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.BeginTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EindTijd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Locatie)
+            </th>
+
+
+
+
+
+            <th></th>
+        </tr>
+
+
+        @{
+            var item = Model.First();
+        }
+
+
+        {
+        <tr>
+
+            <td>
+                @artiest
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EindTijd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Locatie)
+            </td>
+
+
+
+        </tr>
+
+
+
+        }
+    </table>
+    <a href="@Url.Action("Delete","CMS", new {id=item.EvenementID })"
+       class="btn btn-primary">Delete conflicting event</a>
+    <a href="@Url.Action("Edit","CMS", new {id=item.EvenementID })"
+       class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Create","CMS", new {Eventsoort=item.Events.EventSoort })"
+       class="btn btn-primary">Cancel</a>
+
+
+
+</div>
+
+
+
+
+
+                
+
+
+
+

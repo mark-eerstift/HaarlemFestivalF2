@@ -31,24 +31,9 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Index.cshtml", e);
         }
 
-        // GET: CMSTest/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Evenement evenement = db.Evenements.Find(id);
-            if (evenement == null)
-            {
-                return HttpNotFound();
-            }
-            return View(evenement);
-        }
+       
 
         //Word aangeroepen wanneer er op Create x event word gedrukt en roept de juiste view aan.
-         
-
         public ActionResult Create(string Eventsoort)
         {
 
@@ -79,93 +64,138 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Index.cshtml");
         }
 
-        //TO DO:
-        //Datetime picker voor begin en eindtijd. 
-        //De TicketsAvailable variable moet automatisch op Ticketstotaal – Ticketsverkocht gezet worden. 
-        //Check of datetime binnen festival falt
-        //Check of eindtijd niet eerder is dan begintijd.
-
-        //Ontvangt 1 van de 4 event types, checkt of het model klopt en voegt deze dan toe aan de database.
-        //Nog te doen: Checken of een event aan bestaat op basis van Locatie en Begin/eindtijd. 
-        //Zo ja: There is an event called X at location Y at time Z.
-        //Een nettere manier zou zijn een List<Evenementen> mee te geven vanuit de view. 
-
-
+     
+        //Error message voor de event
+        public ActionResult ModalPopUp()
+        {
+            return View();
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Dance d, Food f, History h, Jazz j)
         {
 
-          
-            
-            
-             //if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
-             //   {
-             //       if (!CheckIfDuplicateEvent(d))
-             //       {
-                    
-             //           db.Evenements.Add(d);
-             //           db.SaveChanges();
-             //       }
-             //       else
-             //       {
-             //           //Melding dat event al bestaat, wil je vervangen.
-             //       }
-             //   }
 
-            
 
-            //else if (j.Events.EventSoort == "Jazz" && ModelState.IsValid)
-            //{
-            //    if (!CheckIfDuplicateEvent(j))
-            //    {
-            //        db.Evenements.Add(j);
-            //        db.SaveChanges();
-            //    }
-            //    else
-            //    {
-            //        //Melding dat event al bestaat, wil je vervangen.
-            //    }
-            //}
 
-            if (f.Events.EventSoort == "Food" && ModelState.IsValid)
+            if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
             {
-                if (!CheckIfDuplicateEvent(f))
+                
+
+                Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
+                IEnumerable<Evenement> dances = repo.GetDanceObject(duplicate);
+                if (duplicate == null)
                 {
-                    db.Evenements.Add(f);
+
+                    db.Evenements.Add(d);
                     db.SaveChanges();
+                    return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = d.Events.EventSoort });
                 }
                 else
                 {
-                    //Melding dat event al bestaat, wil je vervangen.
+                    string artiestnaam = duplicate.Artiest.Naam;
+                    TempData["artiest"] = artiestnaam;
+                    
+                    return View("ModalPopUp", dances);
+
                 }
             }
 
-            //else if (h.Events.EventSoort == "History" && ModelState.IsValid)
-            //{
-            //    if (!CheckIfDuplicateEvent(h))
-            //    {
-            //        db.Evenements.Add(h);
-            //        db.SaveChanges();
-            //    }
-            //    else
-            //    {
-            //        //Melding dat event al bestaat, wil je vervangen.
-            //    }
-            //}
+            if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
+            {
+
+
+                Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
+                if (duplicate == null)
+                {
+
+                    db.Evenements.Add(d);
+                    db.SaveChanges();
+                    return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = d.Events.EventSoort });
+                }
+                else
+                {
+                    TempData["artiest"] = duplicate.Artiest.Naam;
+                    TempData["begintijd"] = duplicate.BeginTijd;
+                    TempData["eindtijd"] = duplicate.EindTijd;
+                    TempData["locatie"] = duplicate.Locatie;
+                    TempData["dupeEventID"] = duplicate.EvenementID;
+                    TempData["dupeEvent"] = duplicate;
+                    TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+                    return PartialView("ModalPopUp");
+
+                }
+            }
+
+            if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
+            {
+
+
+                Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
+                if (duplicate == null)
+                {
+
+                    db.Evenements.Add(d);
+                    db.SaveChanges();
+                    return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = d.Events.EventSoort });
+                }
+                else
+                {
+                    TempData["artiest"] = duplicate.Artiest;
+                    TempData["begintijd"] = duplicate.BeginTijd;
+                    TempData["eindtijd"] = duplicate.EindTijd;
+                    TempData["locatie"] = duplicate.Locatie;
+                    TempData["dupeEventID"] = duplicate.EvenementID;
+                    TempData["dupeEvent"] = duplicate;
+                    TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+                    return PartialView("ModalPopUp");
+
+                }
+            }
+
+            if (d.Events.EventSoort == "Dance" && ModelState.IsValid)
+            {
+
+
+                Dance duplicate = (Dance)repo.GetChildByParent(CheckIfDuplicateEvent(d));
+                IEnumerable<Evenement> dances = repo.GetDanceObject(duplicate);
+                
+                if (duplicate == null)
+                {
+
+                    db.Evenements.Add(d);
+                    db.SaveChanges();
+                    return RedirectToAction("ViewEventSales", "CMS", new { eventSoort = d.Events.EventSoort });
+                }
+                else
+                {
+                    TempData["artiest"] = duplicate.Artiest;
+                    TempData["begintijd"] = duplicate.BeginTijd;
+                    TempData["eindtijd"] = duplicate.EindTijd;
+                    TempData["locatie"] = duplicate.Locatie;
+                    TempData["dupeEventID"] = duplicate.EvenementID;
+                    TempData["dupeEvent"] = duplicate;
+                    TempData["error"] = "The following event overlaps with the event you are trying to add: ";
+                    return PartialView("ModalPopUp", dances);
+
+                }
+            }
+
+
+
 
             //Uitvogelen wat hier een logischere return statement is.
             //Vragen: Meer events toevoegen of naar rooster toe ?
 
-            return View("~/Views/CMS/Dance/Index.cshtml");
+            return View();
         }
 
 
         //Controleert of er al een event is op dat precieze tijdstip en locatie.
         //te doen: Eindtijd - begintijd, checken of het evenement dat je wilt toevoegen BEGINT tijdens een ander event. 
         [HttpPost]
-        public bool CheckIfDuplicateEvent(Evenement e)
+        public Evenement CheckIfDuplicateEvent(Evenement e)
         {
             List<Evenement> evenements = db.Evenements.ToList();
             foreach(Evenement x in evenements)
@@ -173,22 +203,19 @@ namespace ProjectWebApplicatie.Controllers
                 //Checkt voor een toegevoegd event of er al een event is op die tijd en locatie. 
                 if(e.BeginTijd == x.BeginTijd && e.EindTijd == x.EindTijd && e.Locatie == x.Locatie)
                 {
-                    
-                    DuplicateFound(x);
-                    return true;
+                   
+                    return x;
                 }
 
                 //Checkt of de begintijd van een event op locatie X TIJDENS een ander event is op die locatie. Ofwel, checkt voor overlap.
                 else if (e.Locatie == x.Locatie && e.BeginTijd.TimeOfDay > x.BeginTijd.TimeOfDay && e.BeginTijd.TimeOfDay < x.EindTijd.TimeOfDay)
                 {
-
-                    OverlapFound(x);
-                    return true;
+                    return x;
                 }
 
             }
 
-            return false;
+            return e;
         }
 
         // GET: CMSTest/Edit/5
@@ -203,7 +230,32 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return HttpNotFound();
             }
-            return View(evenement);
+
+            if (evenement.Events.EventSoort == "Dance")
+            {
+
+                IEnumerable<Dance>dances = repo.GetDanceObject(evenement);
+                Dance d = dances.First();
+                return View(("~/Views/CMS/Dance/Edit.cshtml"), d);
+            }
+            else if (evenement.Events.EventSoort == "Jazz")
+            {
+                Evenement j = new Jazz();
+                return View(("~/Views/CMS/Jazz/Edit.cshtml"), j);
+            }
+            else if (evenement.Events.EventSoort == "History")
+            {
+                Evenement h = new History();
+                return View(("~/Views/CMS/Historic/Edit.cshtml"), h);
+            }
+            else if (evenement.Events.EventSoort == "Food")
+            {
+                Evenement f = new Food();
+                return View(("~/Views/CMS/Food/Edit.cshtml"), f);
+            }
+
+
+            return View("~/Views/CMS/Index.cshtml");
         }
 
         // POST: CMSTest/Edit/5
@@ -211,15 +263,15 @@ namespace ProjectWebApplicatie.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EvenementID,Locatie,BeginTijd,EindTijd,TicketsTotaal,TicketsVerkocht,EvenementPrijs")] Evenement evenement)
+        public ActionResult Edit(Evenement e)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(evenement).State = EntityState.Modified;
+                db.Entry(e).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(evenement);
+            return View(("~/Views/CMS/Dance/ViewDanceEvents.cshtml"), e);
         }
 
         // GET: CMSTest/Delete/5
@@ -234,6 +286,33 @@ namespace ProjectWebApplicatie.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            switch (evenement.Events.EventSoort)
+            {
+                case "Dance":
+                    
+                    
+                    IEnumerable<Dance> danceObject = repo.GetDanceObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), danceObject);
+
+
+                case "Jazz":
+                    IEnumerable<Jazz> jazzObject = repo.GetJazzObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), jazzObject);
+
+                case "History":
+                    IEnumerable<History> historyObject = repo.GetHistoryObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), historyObject);
+                case "Food":
+                    IEnumerable<Food> foodObject = repo.GetFoodObject(evenement);
+
+                    return View(("~/Views/CMS/Dance/Delete.cshtml"), foodObject);
+            }
+
             return View(evenement);
         }
 
@@ -243,9 +322,11 @@ namespace ProjectWebApplicatie.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Evenement evenement = db.Evenements.Find(id);
+
+
             db.Evenements.Remove(evenement);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("~/Views/CMS/Dance/Index.cshtml");
         }
 
         protected override void Dispose(bool disposing)
@@ -261,27 +342,27 @@ namespace ProjectWebApplicatie.Controllers
         //Haalt ALLE events op van een gegeven event-type
         //Krijgt vanuit de benodigde event een Eventtype mee, haalt alles van dat type op uit de database en toont de juiste view.
         [Authorize]
-        public ActionResult ViewEventSales(Evenement e, string Eventsoort)
+        public ActionResult ViewEventSales(Evenement e)
         {
             
             
-            if (Eventsoort == "Dance")
+            if (e.Events.EventSoort == "Dance")
             {
 
                 List<Dance> dances = db.Dances.ToList();
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (Eventsoort == "Jazz")
+            else if (e.Events.EventSoort == "Jazz")
             {
                 List<Jazz> jazzs = db.Jazzs.ToList();
                 return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (Eventsoort == "History")
+            else if (e.Events.EventSoort == "History")
             {
                 List<History> histories = db.Historys.ToList();
                 return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
-            else if (Eventsoort == "Food")
+            else if (e.Events.EventSoort == "Food")
             {
                 List<Food> foods = db.Foods.ToList();
                 return View(("~/Views/CMS/Food/ViewFoodSales.cshtml"), foods);
@@ -294,9 +375,9 @@ namespace ProjectWebApplicatie.Controllers
         
         //Krijgt vanuit de benodigde event een Eventtype en datum mee, haalt alles van dat type en die datum op, en toont de juiste view.
         [Authorize]
-        public ActionResult ViewEventSalesByDate(Evenement e, DateTime date, string Eventsoort)
+        public ActionResult ViewEventSalesByDate(Evenement e, DateTime date)
         {
-            if (Eventsoort == "Dance")
+            if (e.Events.EventSoort == "Dance")
             {
                 List<Dance> dances = new List<Dance>();
                 dances = db.Dances.ToList();
@@ -304,7 +385,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Dance/ViewDanceSales.cshtml"), dances);
             }
-            else if (Eventsoort == "Jazz")
+            else if (e.Events.EventSoort == "Jazz")
             {
                 List<Jazz> jazzs = new List<Jazz>();
                 jazzs = db.Jazzs.ToList();
@@ -312,7 +393,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Jazz/ViewJazzSales.cshtml"), jazzs);
             }
-            else if (Eventsoort == "History")
+            else if (e.Events.EventSoort == "History")
             {
                 List<History> histories = new List<History>();
                 histories = db.Historys.ToList();
@@ -320,7 +401,7 @@ namespace ProjectWebApplicatie.Controllers
 
                 return View(("~/Views/CMS/Historic/ViewHistorySales.cshtml"), histories);
             }
-            else if (Eventsoort == "Food")
+            else if (e.Events.EventSoort == "Food")
             {
                 List<Food> foods = new List<Food>();
                 foods = db.Foods.ToList();
@@ -367,21 +448,9 @@ namespace ProjectWebApplicatie.Controllers
             return View("~/Views/CMS/Historic/Index.cshtml");
         }
 
+       
 
-        public ActionResult DuplicateFound(Evenement x)
-        {
-            Evenement y = repo.GetChildByParent(x);
-            string msg = "data saved";
 
-           return Content("<script language='javascript' type='text/javascript'>alert('Save Successfully');</script>");
-
-           
-        }
-
-        public ActionResult OverlapFound(Evenement x)
-        {
-            return Content("<script language='javascript' type='text/javascript'>alert(message);</script>");
-        }
 
     }
 }

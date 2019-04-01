@@ -10,6 +10,10 @@ namespace ProjectWebApplicatie.Repositories
     {
         Evenement GetEvenement(int? evenementId);
         Evenement GetChildByParent(Evenement x);
+        IEnumerable<Dance> GetDanceObject(Evenement x);
+        IEnumerable<Food> GetFoodObject(Evenement x);
+        IEnumerable<Jazz> GetJazzObject(Evenement x);
+        IEnumerable<History> GetHistoryObject(Evenement x);
         void AddEvenement(Evenement evenement);
         void EditEvenement(Evenement evenement);
         void DeleteEvenement(int id);
