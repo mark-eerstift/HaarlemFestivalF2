@@ -1,4 +1,15 @@
-﻿li {
+﻿
+.container.body-content {
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    top: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+li {
     color: white;
     text-align: center;
     position: relative;
@@ -16,7 +27,20 @@ nav li {
     display: block;
     float: left;
     position: relative;
-    height: 50vh;
-    width: 50vw;
+    height: 40vh;
+    width: 40vw;
+    margin: auto;
+    background-color: aliceblue;
+    border: 5px solid white;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
+.cmsfooter {
+    position: absolute;
+    bottom: 0px;
+    display: block;
+    height: 30px;
+    width: 100vw;
+    background-color: #808080;
+}

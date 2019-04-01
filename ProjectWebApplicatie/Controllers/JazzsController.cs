@@ -32,6 +32,15 @@ namespace ProjectWebApplicatie.Controllers
             return View(orderedList);
         }
 
+        // GET: javascript Jazzs
+        public JsonResult GetJsonSelectorData()
+        {
+            List<Jazz> orderedList = db.Jazzs.ToList();
+            orderedList.Sort((x, y) => x.BeginTijd.CompareTo(y.BeginTijd)); // lambda function sorting the list by date so the timetable works
+           
+            return Json(orderedList); 
+        }
+
         // GET: Jazzs/Details/5
         public ActionResult Details(int? id)
         {

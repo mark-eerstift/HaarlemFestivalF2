@@ -451,35 +451,35 @@ namespace ProjectWebApplicatie.Controllers
 
         // Go to page of changing texts on a page
         [Authorize]
-        public ActionResult ChangeTexts(Evenement e)
+        public ActionResult ChangeTexts(string Eventsoort)
         {
-            switch(e.Events.EventSoort)
+            switch(Eventsoort)
             {
-                case "dance":
+                case "Dance":
                     return View("~/Views/CMS/Index.cshtml");
-                case "historic":
+                case "Historic":
                     return View("~/Views/CMS/Index.cshtml");
-                case "food":
+                case "Food":
                     return View("~/Views/CMS/Index.cshtml");
-                case "jazz":
-                    return View("~/CMS/Jazz/ChangeTexts.cshtml");
+                case "Jazz":
+                    return View("~/Views/CMS/Jazz/ChangeTexts.cshtml");
                 default:
                     return View("~/Views/CMS/Index.cshtml");
             }
         }
         // Go to page of changing images on a page
         [Authorize]
-        public ActionResult ChangeImages(Evenement e)
+        public ActionResult ChangeImages(string Eventsoort)
         {
-            switch (e.Events.EventSoort)
+            switch (Eventsoort)
             {
-                case "dance":
+                case "Dance":
                     return View("~/Views/CMS/Index.cshtml");
-                case "historic":
+                case "Historic":
                     return View("~/Views/CMS/Index.cshtml");
-                case "food":
+                case "Food":
                     return View("~/Views/CMS/Index.cshtml");
-                case "jazz":
+                case "Jazz":
                     return View("~/CMS/Jazz/ChangeImages.cshtml");
                 default:
                     return View("~/Views/CMS/Index.cshtml");

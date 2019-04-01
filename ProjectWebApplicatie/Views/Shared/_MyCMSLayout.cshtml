@@ -30,13 +30,13 @@
                 </ul>
 
             </div>
-            </div>
         </div>
+    </div>
 
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="cmsfooter">
             <p>&copy; @DateTime.Now.Year - Haarlem Festival groep F2</p>
         </footer>
     </div>
@@ -44,5 +44,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/cms/main.js")
 </body>
 </html>

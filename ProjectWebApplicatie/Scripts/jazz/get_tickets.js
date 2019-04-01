@@ -1,4 +1,11 @@
-﻿$(document).ready(function () {
+﻿var selectOptions = null;
+var totalPrice = 0;
+var ticketPrice = 0;
+var quantity = 0;
+
+$(document).ready(function () {
+    getSelectOptions();
+
     $(".mynavbar").addClass("posfixed");
     $(".mynavbar-buttons").addClass("jazz");
     $(".image-logo").addClass("jazz");
@@ -7,22 +14,59 @@
     $("#ticket_type").change(function () {
         resetSelect("ticket_date");
         resetSelect("ticket_name");
-        $(".jazz_artist").show();
+        resetTicketPrice();
         var selected = $(this).children("option:selected").val();
-        setTicketDateSelect(selected);
-    });
-    $("#ticket_date").change(function (event) {
-        resetSelect("ticket_name");
-        var selected = $(this).children("option:selected").val();
-        if (selected == "all_days") {
+        if (selected == "all_access") {
             $(".jazz_artist").hide();
         }
         else {
             $(".jazz_artist").show();
         }
+        setTicketDateSelect(selected);
+        updatePrice();
+    });
+    $("#ticket_date").change(function () {
+        resetSelect("ticket_name");
+        var selected = $(this).children("option:selected").val();
+        switch (selected) {
+            case "all_days":
+                ticketPrice = 85;
+                break;
+
+        }
+        updatePrice();
         setTicketNameSelect(selected);
     });
+
+    $("#quantity").change(function () {
+        quantity = this.val();
+        updatePrice();
+    });
 });
+
+function getSelectOptions() {
+    var url = '/Jazzs/GetJsonSelectorData';
+    $.ajax({
+        type: "POST",
+        dataType: "JSON",
+        url: url,
+        success: function (data) {
+            selectOptions = data;
+        },
+        failure: function () {
+            alert("Oops, could not get ticket data.");
+        }
+    });
+}
+
+function resetTicketPrice() {
+    ticketPrice = 0;
+}
+
+function updatePrice() {
+    totalPrice = ticketPrice * quantity;
+    $("#jazz-lbl-total_price").val("Total price: €" + totalPrice.toFixed(2));
+}
 
 function resetSelect(id) {
     $("#" + id).find("option:not(:first)").remove();
@@ -41,5 +85,10 @@ function setTicketDateSelect(selected) {
 }
 
 function setTicketNameSelect(selected) {
-    
+    console.log(selectOptions);
+    var ticket_name_select = $("#ticket_name"); // load the element only once
+    //ticket_name_select.append($("<option>", { value: data[0].Artiest.Naam }).text(data[0].Artiest.Naam));
+    for (var i = 0; i < selectOptions.lenght; i++) {
+        ticket_name_select.append($("<option>", { value: selectOptions[i].Artiest.Naam }).text(selectOptions[i].Artiest.Naam));
+    }
 }
