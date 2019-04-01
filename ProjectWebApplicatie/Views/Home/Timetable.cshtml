@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<ProjectWebApplicatie.Models.Order>
+
 @{
     ViewBag.Title = "Timetable";
 }
@@ -9,26 +10,44 @@
 
 <body>
     Email address<br>
-    <input type="text" name="email" value="">
-    <button type="button">Get Timetable</button>
+    <input type="text" id="timetableEmail" name="email" value="">
+    <button type="button" onclick="emailTable()">Get Timetable</button>
     <h3>Friday 27 July</h3>
     <div class="timetable"></div>
     <script src="~/Timetable/timetable.js"></script>
-    <script>
-        var timetable = new Timetable();
-        timetable.setScope(9, 3);
-        timetable.addLocations(['Food', 'Dance', 'Jazz', 'Historic'])
-        timetable.addEvent('Ratatouille', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
-        timetable.addEvent('DJ Tiesto', 'Dance', new Date(2019, 7, 27, 21, 30, 00), new Date(2019, 7, 27, 23, 00, 00), { url: '#' })
-        timetable.addEvent('Sax Kings', 'Jazz', new Date(2019, 7, 27, 12, 30, 00), new Date(2019, 7, 27, 14, 00, 00), { url: '#' })
-        var renderer = new Timetable.Renderer(timetable)
-        renderer.draw('.timetable')
+        <script>
+            // timetable base
+            var timetable = new Timetable();
+            timetable.setScope(9, 3);
+            timetable.addLocations(['Food', 'Dance', 'Jazz', 'Historic'])
 
-        var email = <%#ProjectWebApplicatie.ProjectWebApplicatie.Repositories.GetOrderListDb() %>;
-        document.write(email[1])
+            // get JSON data for the Order model
+            var model = @Html.Raw(Json.Encode(Model));
+            function emailTable() {
+                var emailF = document.getElementById('timetableEmail').value
+                console.log(emailF)
+                // filter JSON data down to only the relevant data to user email
+                for (let i = 0; i < model.length; i++) {
+                    if (model[i].Email == emailF)
+                    {
+                        let userData = model[i];
+                        console.log(model[i]);
+                    }
+                }
+            }
 
-        //1. Get all orders from a specific email, SELECT WHERE
-        //2. Put all specific orders into an array
-        //3. Loop over that array, put every single order into the timetable
-    </script>
+            
+            timetable.addEvent('Ratatouille', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
+            timetable.addEvent('DJ Tiesto', 'Dance', new Date(2019, 7, 27, 21, 30, 00), new Date(2019, 7, 27, 23, 00, 00), { url: '#' })
+            timetable.addEvent('Sax Kings', 'Jazz', new Date(2019, 7, 27, 12, 30, 00), new Date(2019, 7, 27, 14, 00, 00), { url: '#' })
+
+            // declare renderer to draw the timetable
+            var renderer = new Timetable.Renderer(timetable)
+            renderer.draw('.timetable')
+
+
+            //1. Get all orders from a specific email, SELECT WHERE
+            //2. Put all specific orders into an array
+            //3. Loop over that array, put every single order into the timetable
+        </script>
 </body>

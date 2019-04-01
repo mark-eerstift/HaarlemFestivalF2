@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProjectWebApplicatie.Models;
 
 namespace ProjectWebApplicatie.Controllers
 {
     public class HomeController : Controller
     {
+        private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+
         public ActionResult Index()
         {
             return View();
@@ -45,7 +48,7 @@ namespace ProjectWebApplicatie.Controllers
         {
             ViewBag.Message = "Page with a timetable";
 
-            return View();
+            return View(db.Orders.ToList());
         }
 
         public ActionResult Food()
