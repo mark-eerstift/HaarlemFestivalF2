@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using ProjectWebApplicatie.Models;
+using System.Web.Services;
 
 namespace ProjectWebApplicatie.Repositories
 {
@@ -11,6 +12,7 @@ namespace ProjectWebApplicatie.Repositories
 
     {
         private ProjectWebApplicatieContextDB db = new ProjectWebApplicatieContextDB();
+        private static ProjectWebApplicatieContextDB db2 = new ProjectWebApplicatieContextDB();
 
         public void AddEvenement(Evenement evenement)
         {
@@ -51,6 +53,12 @@ namespace ProjectWebApplicatie.Repositories
         public Evenement GetEvenement(int? id)
         {
             return db.Evenements.Find(id);
+        }
+
+        [WebMethod]
+        public static Evenement GetEvenementWeb(int? id)
+        {
+            return db2.Evenements.Find(id);
         }
 
         public IEnumerable<Evenement> GetAllDance()

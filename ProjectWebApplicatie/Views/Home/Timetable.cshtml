@@ -5,6 +5,9 @@
 }
 <head>
     <link rel="stylesheet" href="~/Timetable/timetablejs.css">
+    <asp:ScriptManager ID="ScriptManager1"
+                       EnablePageMethods="true"
+                       EnablePartialRendering="true" runat="server" />
 </head>
 <h2>Timetable</h2>
 
@@ -12,10 +15,23 @@
     Email address<br>
     <input type="text" id="timetableEmail" name="email" value="">
     <button type="button" onclick="emailTable()">Get Timetable</button>
-    <h3>Friday 27 July</h3>
-    <div class="timetable"></div>
-    <script src="~/Timetable/timetable.js"></script>
+
+
+        <h3>Friday 27 July</h3>
+        <div class="timetable"></div>
+        <script src="~/Timetable/timetable.js"></script>
         <script>
+
+
+            function OnSuccess()
+            {
+                alert("success");
+            }
+
+            function OnError()
+            {
+                alert("error");
+            }
             // timetable base
             var timetable = new Timetable();
             timetable.setScope(9, 3);
@@ -23,6 +39,9 @@
 
             // get JSON data for the Order model
             var model = @Html.Raw(Json.Encode(Model));
+
+
+
             function emailTable() {
                 var emailF = document.getElementById('timetableEmail').value
                 console.log(emailF)
@@ -32,11 +51,13 @@
                     {
                         let userData = model[i];
                         console.log(model[i]);
+                        let evenement = PageMethods.GetEvenementWeb(model[i].TicketID, OnSuccess, OnError);
+                        console.log(evenement);
                     }
                 }
             }
 
-            
+
             timetable.addEvent('Ratatouille', 'Food', new Date(2019, 7, 27, 19, 30, 00), new Date(2019, 7, 27, 21, 00, 00), { url: '#' })
             timetable.addEvent('DJ Tiesto', 'Dance', new Date(2019, 7, 27, 21, 30, 00), new Date(2019, 7, 27, 23, 00, 00), { url: '#' })
             timetable.addEvent('Sax Kings', 'Jazz', new Date(2019, 7, 27, 12, 30, 00), new Date(2019, 7, 27, 14, 00, 00), { url: '#' })
